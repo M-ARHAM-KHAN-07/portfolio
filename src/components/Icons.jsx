@@ -1,4 +1,4 @@
-/** Inline SVG icons — keeps the bundle dependency-free. */
+/** Inline SVG icons, keeping the bundle dependency-free. */
 
 const base = {
   fill: 'none',

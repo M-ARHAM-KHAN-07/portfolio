@@ -16,9 +16,10 @@ export default function Hero() {
     <section id="top" className="relative overflow-hidden pt-32 pb-20 sm:pt-40 sm:pb-24">
       <div className="section-shell">
         <Reveal>
-          <h1 className="max-w-4xl text-4xl font-extrabold leading-[1.08] tracking-tight text-white sm:text-6xl lg:text-7xl">
-            {profile.name.split(' ')[0]}
-            <span className="block bg-gradient-to-r from-accent-400 via-sky-300 to-accent-500 bg-clip-text text-transparent">
+          {/* Fluid size keeps the full name on a single line from 320px up to desktop */}
+          <h1 className="whitespace-nowrap text-[clamp(1.6rem,7vw,4rem)] font-extrabold leading-[1.1] tracking-tight text-white">
+            {profile.name.split(' ')[0]}{' '}
+            <span className="bg-gradient-to-r from-accent-400 via-sky-300 to-accent-500 bg-clip-text text-transparent">
               {profile.name.split(' ').slice(1).join(' ')}
             </span>
           </h1>

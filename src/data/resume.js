@@ -1,6 +1,6 @@
 /**
  * Single source of truth for every piece of content on the site.
- * Edit this file to update the portfolio — components read from it directly.
+ * Edit this file to update the portfolio; components read from it directly.
  */
 
 export const profile = {
@@ -13,11 +13,11 @@ export const profile = {
   githubHandle: 'M-ARHAM-KHAN-07',
   linkedin: 'https://www.linkedin.com/in/arham-khan7',
   linkedinHandle: 'arham-khan7',
-  // Place the PDF at public/resume.pdf — see README.
+  // Place the PDF at public/resume.pdf (see README).
   resume: 'resume.pdf',
   headline: 'I build data pipelines that executives can actually trust.',
   summary:
-    'Data Engineer with 1+ years designing and automating ETL/ELT pipelines, lakehouse and cloud warehouse platforms, and BI reporting for enterprise clients. I work across Spark/Databricks, Airflow and dbt — root-causing data quality issues, building validation frameworks, and shipping dashboards that drive decision-making.',
+    'Data Engineer with 1+ years designing and automating ETL/ELT pipelines, lakehouse and cloud warehouse platforms, and BI reporting for enterprise clients. I work across Spark/Databricks, Airflow and dbt, root-causing data quality issues, building validation frameworks, and shipping dashboards that drive decision-making.',
   heroStack: [
     'Python',
     'SQL',
@@ -41,7 +41,7 @@ export const experience = [
   {
     company: 'DotLabs',
     role: 'Associate Data Engineer',
-    period: 'Jul 2025 — Present',
+    period: 'Jul 2025 - Present',
     current: true,
     blurb:
       'Own end-to-end delivery of ingestion, transformation and BI layers for a portfolio of enterprise clients.',
@@ -76,7 +76,7 @@ export const experience = [
   {
     company: 'Askaan Tech Labs',
     role: 'Data / AI Engineer Intern',
-    period: 'Jun 2024 — Sep 2024',
+    period: 'Jun 2024 - Sep 2024',
     current: false,
     blurb: 'Applied ML work across the full modelling lifecycle, from raw data to deployed regressors.',
     highlights: [
@@ -84,7 +84,7 @@ export const experience = [
         text: 'Developed and deployed regression models (Linear Regression, Random Forest) with cross-validation that outperformed baseline benchmarks.',
       },
       {
-        text: 'Performed end-to-end preprocessing — missing-value handling, outlier detection and standardization — to guarantee model-ready inputs.',
+        text: 'Performed end-to-end preprocessing (missing-value handling, outlier detection and standardization) to guarantee model-ready inputs.',
       },
       {
         text: 'Ran exploratory data analysis using statistical methods to drive feature engineering decisions.',
@@ -96,7 +96,7 @@ export const experience = [
 
 export const projects = [
   {
-    title: 'KPI Integrity Audit — Metabase × BigQuery',
+    title: 'KPI Integrity Audit: Metabase & BigQuery',
     kind: 'Data Quality',
     featured: true,
     description:
@@ -124,7 +124,7 @@ export const projects = [
     stack: ['Python', 'SQL', 'BigQuery', 'Data Validation'],
   },
   {
-    title: 'Kasper — dbt + Airflow Orchestration',
+    title: 'Kasper: dbt + Airflow Orchestration',
     kind: 'Data Platform',
     featured: true,
     description:
@@ -138,7 +138,7 @@ export const projects = [
     stack: ['dbt', 'Apache Airflow', 'SQL', 'Data Warehousing'],
   },
   {
-    title: 'Lakehouse Pipeline — Spark on Databricks',
+    title: 'Lakehouse Pipeline: Spark on Databricks',
     kind: 'Big Data',
     featured: true,
     description:
@@ -152,11 +152,11 @@ export const projects = [
     stack: ['Apache Spark', 'Databricks', 'PySpark', 'Delta Lake', 'Azure Data Factory', 'Snowflake'],
   },
   {
-    title: 'Warehouse Copilot — RAG over Data Platform Metadata',
+    title: 'Warehouse Copilot: RAG over Data Platform Metadata',
     kind: 'AI / LLM',
     featured: true,
     description:
-      'A retrieval-augmented assistant that answers questions about the data platform itself — what a table means, which model produces it, where a column comes from. Indexes dbt docs, schema metadata and column descriptions so analysts stop asking the same questions in Slack.',
+      'A retrieval-augmented assistant that answers questions about the data platform itself: what a table means, which model produces it, where a column comes from. Indexes dbt docs, schema metadata and column descriptions so analysts stop asking the same questions in Slack.',
     architecture: [
       'Ingest dbt manifest, catalog metadata and column-level docs as the knowledge corpus',
       'Chunk + embed into a vector store, retrieving by semantic similarity at query time',
@@ -166,7 +166,7 @@ export const projects = [
     stack: ['Python', 'LLM / RAG', 'Vector Search', 'dbt', 'FastAPI', 'Docker'],
   },
   {
-    title: 'Escana — Executive Power BI Reporting',
+    title: 'Escana: Executive Power BI Reporting',
     kind: 'BI & Analytics',
     featured: false,
     description:
@@ -179,7 +179,7 @@ export const projects = [
     stack: ['Power BI', 'SQL', 'Data Modelling'],
   },
   {
-    title: 'Staffan — Unified Product Analytics Warehouse',
+    title: 'Staffan: Unified Product Analytics Warehouse',
     kind: 'Data Platform',
     featured: false,
     description:
@@ -192,7 +192,7 @@ export const projects = [
     stack: ['BigQuery', 'Stripe', 'RevenueCat', 'Amplitude', 'Looker Studio'],
   },
   {
-    title: 'Blood Cell Classification — Computer Vision',
+    title: 'Blood Cell Classification: Computer Vision',
     kind: 'Machine Learning',
     featured: false,
     description:
@@ -281,7 +281,7 @@ export const skillGroups = [
 export const education = {
   school: 'University of Central Punjab',
   degree: 'B.S. Computer Science',
-  period: 'Nov 2021 — Jul 2025',
+  period: 'Nov 2021 - Jul 2025',
   gpa: '3.74 / 4.0',
   coursework: [
     'Machine Learning',

@@ -48,7 +48,7 @@ export default function Contact() {
               </h2>
               <p className="mt-4 text-base leading-relaxed text-slate-400">
                 Open to Data Engineering roles and pipeline / analytics consulting. The fastest way
-                to reach me is email — I reply to everything.
+                to reach me is email, and I reply to everything.
               </p>
 
               <div className="mt-9 flex flex-wrap justify-center gap-3">

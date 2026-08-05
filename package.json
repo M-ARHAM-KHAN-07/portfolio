@@ -3,7 +3,7 @@
   "private": true,
   "version": "1.0.0",
   "type": "module",
-  "description": "Personal developer portfolio for Muhammad Arham Khan — Data Engineer",
+  "description": "Personal developer portfolio for Muhammad Arham Khan, Data Engineer",
   "scripts": {
     "dev": "vite",
     "build": "vite build",

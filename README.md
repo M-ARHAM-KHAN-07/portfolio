@@ -1,4 +1,4 @@
-# Muhammad Arham Khan — Portfolio
+# Muhammad Arham Khan | Portfolio
 
 A dark-themed, fully responsive developer portfolio built with **React + Vite + Tailwind CSS v4**, deployed to **GitHub Pages**.
 
@@ -28,7 +28,7 @@ npm run deploy   # build + push dist/ to the gh-pages branch
 
 ## Editing content
 
-**All copy lives in [`src/data/resume.js`](src/data/resume.js)** — profile, stats, experience,
+**All copy lives in [`src/data/resume.js`](src/data/resume.js)**: profile, stats, experience,
 projects, skills and education. Change it there and every component updates. No component
 edits needed for content changes.
 
@@ -36,7 +36,7 @@ To swap the downloadable resume, replace `public/resume.pdf`.
 
 ## Deploying to GitHub Pages
 
-### Option A — GitHub Actions (recommended, auto-deploys on push)
+### Option A: GitHub Actions (recommended, auto-deploys on push)
 
 1. Create a repo and push:
 
@@ -56,7 +56,7 @@ To swap the downloadable resume, replace `public/resume.pdf`.
 
 Site URL: `https://M-ARHAM-KHAN-07.github.io/<repo-name>/`
 
-### Option B — one command from your machine
+### Option B: one command from your machine
 
 ```bash
 VITE_BASE=/<repo-name>/ npm run deploy     # bash
@@ -100,5 +100,5 @@ Then set **Settings → Pages → Source: `Deploy from a branch` → `gh-pages` 
 ## Notes
 
 - Responsive across mobile / tablet / desktop; nav collapses to a full-screen sheet under `md`.
-- Respects `prefers-reduced-motion` — scroll reveals and transitions are disabled.
+- Respects `prefers-reduced-motion`; scroll reveals and transitions are disabled.
 - Includes a skip-to-content link, focus-visible outlines and labelled icon links for a11y.
