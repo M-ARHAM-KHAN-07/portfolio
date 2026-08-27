@@ -17,7 +17,7 @@ export const profile = {
   resume: 'resume.pdf',
   headline: 'I build data pipelines that executives can actually trust.',
   summary:
-    'Data Engineer with 1+ years designing and automating ETL/ELT pipelines, lakehouse and cloud warehouse platforms, and BI reporting for enterprise clients. I work across Spark/Databricks, Airflow and dbt, root-causing data quality issues, building validation frameworks, and shipping dashboards that drive decision-making.',
+    'Data Engineer designing and automating ETL/ELT pipelines, lakehouse and cloud warehouse platforms, and BI reporting for enterprise clients. I work across Spark/Databricks, Airflow and dbt, root-causing data quality issues, building validation frameworks, and shipping dashboards that drive decision-making.',
   heroStack: [
     'Python',
     'SQL',
@@ -31,7 +31,6 @@ export const profile = {
 }
 
 export const stats = [
-  { value: '1+', label: 'Years building data platforms' },
   { value: '7+', label: 'Enterprise pipelines shipped' },
   { value: '<2%', label: 'Validation variance vs. source' },
   { value: '~30%', label: 'Manual reporting effort removed' },
@@ -40,7 +39,7 @@ export const stats = [
 export const experience = [
   {
     company: 'DotLabs',
-    role: 'Associate Data Engineer',
+    role: 'Data Engineer',
     period: 'Jul 2025 - Present',
     current: true,
     blurb:
@@ -95,6 +94,35 @@ export const experience = [
 ]
 
 export const projects = [
+  {
+    title: 'Cameron: AWS Serverless Pipeline Engineering',
+    kind: 'Cloud / Serverless',
+    featured: true,
+    description:
+      'Audited a production AWS Lambda codebase of 17 undocumented function directories and grouped them into 7 logical pipelines through static analysis alone, without touching source. Then rebuilt two of them from scratch in an isolated sandbox: an SES/S3 email ingestion pipeline and a 4-stage event-driven call-notes pipeline that transcribes recordings and drafts summary notes with Claude on Amazon Bedrock.',
+    architecture: [
+      'Mapped 17 Lambdas onto 7 pipelines by static analysis of imports, environment variables and cross-service calls',
+      'S3-triggered Lambdas parse inbound .eml MIME messages, route CSV attachments by filename pattern and load them into PostgreSQL on RDS',
+      'Pure-Python pg8000 driver packaged as a custom deployment bundle, avoiding compiled dependencies and Lambda Layers entirely',
+      'VPC hardening: RDS moved off the public internet behind scoped security groups, a Gateway endpoint for S3 and an Interface endpoint for Secrets Manager with private DNS',
+      'Call-notes flow: DynamoDB Streams as the state tracker driving four chained Lambdas through Transcribe, Bedrock and SES',
+      'Designed for graceful degradation when Transcribe proved unavailable in-region, substituting stand-in data in the exact output format to keep every downstream contract intact',
+    ],
+    impact:
+      'Traced a silent, output-free VPC timeout to a single missing Gateway endpoint route table association using timing instrumentation',
+    stack: [
+      'AWS Lambda',
+      'S3',
+      'RDS PostgreSQL',
+      'DynamoDB Streams',
+      'VPC',
+      'Secrets Manager',
+      'Amazon Bedrock',
+      'Transcribe',
+      'SES',
+      'Python / boto3',
+    ],
+  },
   {
     title: 'KPI Integrity Audit: Metabase & BigQuery',
     kind: 'Data Quality',
@@ -241,6 +269,8 @@ export const skillGroups = [
     items: [
       'Snowflake',
       'Google BigQuery',
+      'PostgreSQL',
+      'DynamoDB',
       'MySQL',
       'MariaDB',
       'OpenSearch',
@@ -251,7 +281,10 @@ export const skillGroups = [
   {
     title: 'Cloud & Infrastructure',
     items: [
-      'AWS (EC2, S3, Glue)',
+      'AWS (Lambda, EC2, S3, Glue, RDS)',
+      'Serverless & Event-Driven Architecture',
+      'VPC & Network Security',
+      'AWS Secrets Manager',
       'Azure (ADF, Blob Storage)',
       'Docker',
       'Kubernetes',
@@ -267,6 +300,7 @@ export const skillGroups = [
     title: 'AI & Machine Learning',
     items: [
       'LLM / RAG Applications',
+      'Amazon Bedrock',
       'Vector Search & Embeddings',
       'XGBoost',
       'Random Forest',

@@ -98,7 +98,7 @@ export default function Hero() {
 
         {/* Stat strip */}
         <Reveal delay={300}>
-          <dl className="mt-16 grid grid-cols-2 gap-px overflow-hidden rounded-2xl border border-white/[0.07] bg-white/[0.06] sm:mt-20 lg:grid-cols-4">
+          <dl className="mt-16 grid grid-cols-1 gap-px overflow-hidden rounded-2xl border border-white/[0.07] bg-white/[0.06] sm:mt-20 sm:grid-cols-3">
             {stats.map((stat) => (
               <div key={stat.label} className="bg-ink-850/80 px-5 py-6 backdrop-blur-sm sm:px-6">
                 <dt className="font-mono text-2xl font-semibold text-accent-400 sm:text-3xl">
