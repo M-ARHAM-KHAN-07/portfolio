@@ -1,9 +1,9 @@
 /** Inline SVG icons, keeping the bundle dependency-free. */
 
-const base = {
+const stroke = {
   fill: 'none',
   stroke: 'currentColor',
-  strokeWidth: 1.75,
+  strokeWidth: 1.6,
   strokeLinecap: 'round',
   strokeLinejoin: 'round',
   viewBox: '0 0 24 24',
@@ -26,69 +26,100 @@ export function LinkedInIcon(props) {
   )
 }
 
-export function MailIcon(props) {
-  return (
-    <svg {...base} {...props}>
-      <rect x="2.5" y="4.5" width="19" height="15" rx="2.5" />
-      <path d="m3 7 8.2 5.5a1.5 1.5 0 0 0 1.6 0L21 7" />
-    </svg>
-  )
-}
+export const MailIcon = (p) => (
+  <svg {...stroke} {...p}>
+    <rect x="2.5" y="4.5" width="19" height="15" rx="2.5" />
+    <path d="m3 7 8.2 5.5a1.5 1.5 0 0 0 1.6 0L21 7" />
+  </svg>
+)
 
-export function DownloadIcon(props) {
-  return (
-    <svg {...base} {...props}>
-      <path d="M12 3v12m0 0 4.5-4.5M12 15l-4.5-4.5" />
-      <path d="M3.5 16.5v2A2.5 2.5 0 0 0 6 21h12a2.5 2.5 0 0 0 2.5-2.5v-2" />
-    </svg>
-  )
-}
+export const DownloadIcon = (p) => (
+  <svg {...stroke} {...p}>
+    <path d="M12 3v12m0 0 4.5-4.5M12 15l-4.5-4.5" />
+    <path d="M3.5 16.5v2A2.5 2.5 0 0 0 6 21h12a2.5 2.5 0 0 0 2.5-2.5v-2" />
+  </svg>
+)
 
-export function ArrowUpRightIcon(props) {
-  return (
-    <svg {...base} {...props}>
-      <path d="M7 17 17 7M8 7h9v9" />
-    </svg>
-  )
-}
+export const ArrowUpRightIcon = (p) => (
+  <svg {...stroke} {...p}>
+    <path d="M7 17 17 7M8 7h9v9" />
+  </svg>
+)
 
-export function LocationIcon(props) {
-  return (
-    <svg {...base} {...props}>
-      <path d="M12 21s7-5.4 7-11a7 7 0 1 0-14 0c0 5.6 7 11 7 11Z" />
-      <circle cx="12" cy="10" r="2.75" />
-    </svg>
-  )
-}
+export const ArrowRightIcon = (p) => (
+  <svg {...stroke} {...p}>
+    <path d="M4 12h15m0 0-6-6m6 6-6 6" />
+  </svg>
+)
 
-export function SparkIcon(props) {
-  return (
-    <svg {...base} {...props}>
-      <path d="M12 3v4M12 17v4M4.9 4.9l2.8 2.8M16.3 16.3l2.8 2.8M3 12h4M17 12h4M4.9 19.1l2.8-2.8M16.3 7.7l2.8-2.8" />
-    </svg>
-  )
-}
+export const ArrowDownIcon = (p) => (
+  <svg {...stroke} {...p}>
+    <path d="M12 4v15m0 0 6-6m-6 6-6-6" />
+  </svg>
+)
 
-export function MenuIcon(props) {
-  return (
-    <svg {...base} {...props}>
-      <path d="M4 7h16M4 12h16M4 17h16" />
-    </svg>
-  )
-}
+export const LocationIcon = (p) => (
+  <svg {...stroke} {...p}>
+    <path d="M12 21s7-5.4 7-11a7 7 0 1 0-14 0c0 5.6 7 11 7 11Z" />
+    <circle cx="12" cy="10" r="2.75" />
+  </svg>
+)
 
-export function CloseIcon(props) {
-  return (
-    <svg {...base} {...props}>
-      <path d="M6 6l12 12M18 6 6 18" />
-    </svg>
-  )
-}
+export const CheckIcon = (p) => (
+  <svg {...stroke} {...p}>
+    <path d="m4.5 12.5 5 5 10-11" />
+  </svg>
+)
 
-export function CheckIcon(props) {
-  return (
-    <svg {...base} {...props}>
-      <path d="m4.5 12.5 5 5 10-11" />
-    </svg>
-  )
-}
+export const MenuIcon = (p) => (
+  <svg {...stroke} {...p}>
+    <path d="M4 8h16M4 16h16" />
+  </svg>
+)
+
+export const CloseIcon = (p) => (
+  <svg {...stroke} {...p}>
+    <path d="M6 6l12 12M18 6 6 18" />
+  </svg>
+)
+
+export const SparkIcon = (p) => (
+  <svg {...stroke} {...p}>
+    <path d="M12 3v4M12 17v4M4.9 4.9l2.8 2.8M16.3 16.3l2.8 2.8M3 12h4M17 12h4M4.9 19.1l2.8-2.8M16.3 7.7l2.8-2.8" />
+  </svg>
+)
+
+export const ProblemIcon = (p) => (
+  <svg {...stroke} {...p}>
+    <circle cx="12" cy="12" r="9" />
+    <path d="M12 7.5v5.5M12 16.4v.1" />
+  </svg>
+)
+
+export const LayersIcon = (p) => (
+  <svg {...stroke} {...p}>
+    <path d="m12 3 8.5 4.5L12 12 3.5 7.5 12 3Z" />
+    <path d="m3.5 12 8.5 4.5L20.5 12M3.5 16.5 12 21l8.5-4.5" />
+  </svg>
+)
+
+export const ResultIcon = (p) => (
+  <svg {...stroke} {...p}>
+    <path d="M4 19V9M10 19V4M16 19v-7M22 19H2" />
+  </svg>
+)
+
+export const BulbIcon = (p) => (
+  <svg {...stroke} {...p}>
+    <path d="M9.5 18h5M10 21h4" />
+    <path d="M12 3a6 6 0 0 0-3.5 10.9c.5.4.8 1 .8 1.6v.5h5.4v-.5c0-.6.3-1.2.8-1.6A6 6 0 0 0 12 3Z" />
+  </svg>
+)
+
+export const DatabaseIcon = (p) => (
+  <svg {...stroke} {...p}>
+    <ellipse cx="12" cy="6" rx="7.5" ry="3" />
+    <path d="M4.5 6v12c0 1.7 3.4 3 7.5 3s7.5-1.3 7.5-3V6" />
+    <path d="M4.5 12c0 1.7 3.4 3 7.5 3s7.5-1.3 7.5-3" />
+  </svg>
+)

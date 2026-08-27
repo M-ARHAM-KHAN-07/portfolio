@@ -1,98 +1,221 @@
 @import 'tailwindcss';
 
+/* ------------------------------------------------------------------
+   Design tokens
+   Dark-first. One accent (electric cyan), near-black surfaces, off-white
+   text. Everything else is a thin border or a low-alpha wash.
+------------------------------------------------------------------ */
 @theme {
   --font-sans: 'Inter', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif;
-  --font-mono: 'JetBrains Mono', ui-monospace, 'SFMono-Regular', Menlo, monospace;
+  --font-mono: 'IBM Plex Mono', ui-monospace, 'SFMono-Regular', Menlo, monospace;
 
-  /* Surfaces */
-  --color-ink-950: #05070a;
-  --color-ink-900: #07090d;
-  --color-ink-850: #0b0f16;
-  --color-ink-800: #111722;
-  --color-ink-700: #1b2432;
+  /* Surfaces, darkest to lightest */
+  --color-void: #060709;
+  --color-base: #08090c;
+  --color-raised: #0d0f14;
+  --color-overlay: #12151c;
+  --color-line: #1c212b;
+
+  /* Text */
+  --color-bright: #f2f4f8;
+  --color-body: #a9b1c1;
+  --color-muted: #7b8496;
 
   /* Accent */
-  --color-accent-400: #38bdf8;
-  --color-accent-500: #0ea5e9;
-  --color-accent-600: #0284c7;
+  --color-accent: #38bdf8;
+  --color-accent-soft: #7dd3fc;
+  --color-accent-deep: #0284c7;
+
+  /* Signal (used sparingly, for real measured results only) */
+  --color-signal: #4ade80;
+
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 @layer base {
   html {
     scroll-behavior: smooth;
-    scroll-padding-top: 5rem;
+    scroll-padding-top: 5.5rem;
+    -webkit-text-size-adjust: 100%;
   }
 
   body {
-    @apply bg-ink-900 text-slate-300 font-sans antialiased;
-    /* Soft glow backdrop */
-    background-image:
-      radial-gradient(60rem 40rem at 78% -10%, rgba(14, 165, 233, 0.13), transparent 60%),
-      radial-gradient(48rem 34rem at 5% 8%, rgba(56, 189, 248, 0.07), transparent 60%);
-    background-size: 100% 100%, 100% 100%;
-    background-attachment: fixed;
+    @apply bg-base text-body font-sans antialiased;
+    overflow-x: hidden;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    @apply text-bright;
+    text-wrap: balance;
+  }
+
+  p {
+    text-wrap: pretty;
   }
 
   ::selection {
-    @apply bg-accent-500/30 text-white;
+    background: color-mix(in oklab, var(--color-accent) 30%, transparent);
+    @apply text-white;
   }
 
-  /* Scrollbar */
   ::-webkit-scrollbar {
     width: 10px;
     height: 10px;
   }
   ::-webkit-scrollbar-track {
-    @apply bg-ink-950;
+    @apply bg-void;
   }
   ::-webkit-scrollbar-thumb {
-    @apply bg-ink-700 rounded-full;
+    @apply bg-line rounded-full;
   }
   ::-webkit-scrollbar-thumb:hover {
-    @apply bg-slate-600;
+    @apply bg-muted;
   }
 
   :focus-visible {
-    @apply outline-2 outline-offset-2 outline-accent-400;
+    outline: 2px solid var(--color-accent);
+    outline-offset: 3px;
+    border-radius: 4px;
+  }
+
+  /* Only show the dotted ring for keyboard users, never on mouse click */
+  :focus:not(:focus-visible) {
+    outline: none;
   }
 }
 
 @layer components {
-  .section-shell {
-    @apply mx-auto w-full max-w-6xl px-5 sm:px-8 lg:px-10;
+  .shell {
+    @apply mx-auto w-full max-w-[76rem] px-5 sm:px-8 lg:px-10;
   }
 
-  .card-surface {
-    @apply rounded-2xl border border-white/[0.07] bg-ink-850/70 backdrop-blur-sm
-           transition-colors duration-300 hover:border-accent-400/30;
+  /* Thin-bordered glass panel, the workhorse surface of the site */
+  .panel {
+    @apply rounded-2xl border border-line bg-raised/60 backdrop-blur-md;
   }
 
-  .chip {
-    @apply inline-flex items-center rounded-md border border-white/[0.08] bg-white/[0.03]
-           px-2.5 py-1 font-mono text-[11px] leading-none tracking-tight text-slate-400
+  .panel-hover {
+    @apply transition-[border-color,background-color,transform] duration-300;
+  }
+  .panel-hover:hover {
+    border-color: color-mix(in oklab, var(--color-accent) 35%, var(--color-line));
+    @apply bg-overlay/70;
+  }
+
+  /* Monospace technical label, used for eyebrows and metadata */
+  .label {
+    @apply font-mono text-[11px] uppercase tracking-[0.2em] text-muted;
+  }
+
+  .tag {
+    @apply inline-flex items-center rounded-md border border-line bg-white/[0.02]
+           px-2.5 py-1 font-mono text-[11px] leading-none text-muted
            transition-colors duration-200;
   }
 
-  .chip-accent {
-    @apply border-accent-400/25 bg-accent-500/10 text-accent-400;
+  .tag-accent {
+    border-color: color-mix(in oklab, var(--color-accent) 30%, transparent);
+    background: color-mix(in oklab, var(--color-accent) 10%, transparent);
+    @apply text-accent;
+  }
+
+  /* Primary and secondary buttons */
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 rounded-xl px-5 py-3
+           text-sm font-semibold transition-all duration-200;
+  }
+
+  .btn-primary {
+    @apply bg-accent text-void;
+  }
+  .btn-primary:hover {
+    background: var(--color-accent-soft);
+    box-shadow: 0 8px 30px -8px color-mix(in oklab, var(--color-accent) 55%, transparent);
+  }
+
+  .btn-ghost {
+    @apply border border-line bg-white/[0.02] text-bright;
+  }
+  .btn-ghost:hover {
+    border-color: color-mix(in oklab, var(--color-accent) 35%, var(--color-line));
+    @apply bg-white/[0.05];
+  }
+
+  /* Hairline separator that fades at both ends */
+  .rule {
+    height: 1px;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      var(--color-line) 15%,
+      var(--color-line) 85%,
+      transparent
+    );
   }
 }
 
-/* Scroll-reveal; inert when the user prefers reduced motion */
-.reveal {
-  opacity: 0;
-  transform: translateY(18px);
-  transition:
-    opacity 0.6s cubic-bezier(0.22, 1, 0.36, 1),
-    transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
-  will-change: opacity, transform;
+/* ------------------------------------------------------------------
+   Stack item note
+   Visible by default so touch users can read it. Collapsed and revealed
+   on hover/focus only where a fine pointer actually exists.
+------------------------------------------------------------------ */
+.stack-note {
+  display: grid;
+  grid-template-rows: 1fr;
 }
 
-.reveal.is-visible {
+@media (hover: hover) and (pointer: fine) {
+  .stack-note {
+    grid-template-rows: 0fr;
+    transition: grid-template-rows 0.3s var(--ease-out-expo);
+  }
+  .stack-item:hover .stack-note,
+  .stack-item:focus-within .stack-note {
+    grid-template-rows: 1fr;
+  }
+}
+
+/* Motion
+------------------------------------------------------------------ */
+.reveal {
+  opacity: 0;
+  transform: translateY(16px);
+  transition:
+    opacity 0.7s var(--ease-out-expo),
+    transform 0.7s var(--ease-out-expo);
+}
+
+.reveal.shown {
   opacity: 1;
   transform: none;
 }
 
+@keyframes drift {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0);
+  }
+  50% {
+    transform: translate3d(0, -14px, 0);
+  }
+}
+
+@keyframes pulse-ring {
+  0% {
+    transform: scale(0.85);
+    opacity: 0.7;
+  }
+  70%,
+  100% {
+    transform: scale(2.2);
+    opacity: 0;
+  }
+}
+
+/* Honour the OS reduced-motion setting everywhere, no exceptions */
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
@@ -106,6 +229,7 @@
   *::before,
   *::after {
     animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
   }
 }

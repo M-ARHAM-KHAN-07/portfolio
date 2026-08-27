@@ -1,25 +1,29 @@
 import Reveal from './Reveal'
 
 /**
- * Consistent section wrapper: anchor target, eyebrow label, heading and lede.
+ * Shared section chrome: anchor target, monospace eyebrow with an index,
+ * display heading and optional lede.
  */
-export default function Section({ id, eyebrow, title, lede, children }) {
+export default function Section({ id, index, eyebrow, title, lede, children, className = '' }) {
   return (
-    <section id={id} className="scroll-mt-24 py-20 sm:py-24 lg:py-28">
-      <div className="section-shell">
+    <section id={id} className={`scroll-mt-24 py-24 sm:py-28 lg:py-32 ${className}`}>
+      <div className="shell">
         <Reveal>
-          <div className="max-w-2xl">
-            {eyebrow && (
-              <p className="mb-3 font-mono text-xs uppercase tracking-[0.22em] text-accent-400">
-                {eyebrow}
-              </p>
-            )}
-            <h2 className="text-3xl font-bold tracking-tight text-white sm:text-4xl">{title}</h2>
-            {lede && <p className="mt-4 text-base leading-relaxed text-slate-400">{lede}</p>}
+          <div className="flex items-center gap-3">
+            {index && <span className="label text-accent">{index}</span>}
+            <span className="label">{eyebrow}</span>
+            <span className="h-px flex-1 bg-line" />
+          </div>
+
+          <div className="mt-6 max-w-3xl">
+            <h2 className="text-3xl font-semibold tracking-[-0.02em] sm:text-4xl lg:text-[2.75rem] lg:leading-[1.1]">
+              {title}
+            </h2>
+            {lede && <p className="mt-5 text-base leading-relaxed text-body sm:text-lg">{lede}</p>}
           </div>
         </Reveal>
 
-        <div className="mt-12 sm:mt-14">{children}</div>
+        <div className="mt-14 sm:mt-16">{children}</div>
       </div>
     </section>
   )

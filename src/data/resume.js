@@ -1,6 +1,9 @@
 /**
  * Single source of truth for every piece of content on the site.
  * Edit this file to update the portfolio; components read from it directly.
+ *
+ * Factual rule: everything here traces back to the resume or prior portfolio
+ * content. Do not add companies, clients, metrics or results that are not real.
  */
 
 export const profile = {
@@ -13,80 +16,99 @@ export const profile = {
   githubHandle: 'M-ARHAM-KHAN-07',
   linkedin: 'https://www.linkedin.com/in/arham-khan7',
   linkedinHandle: 'arham-khan7',
-  // Place the PDF at public/resume.pdf (see README).
   resume: 'resume.pdf',
-  headline: 'I build data pipelines that executives can actually trust.',
+  tagline: 'Building reliable data systems, pipelines and intelligent applications.',
   summary:
-    'Data Engineer designing and automating ETL/ELT pipelines, lakehouse and cloud warehouse platforms, and BI reporting for enterprise clients. I work across Spark/Databricks, Airflow and dbt, root-causing data quality issues, building validation frameworks, and shipping dashboards that drive decision-making.',
-  heroStack: [
-    'Python',
-    'SQL',
-    'Apache Spark',
-    'Databricks',
-    'Airflow',
-    'dbt',
-    'Snowflake',
-    'AWS',
+    'Data Engineer specializing in ETL/ELT pipeline design, cloud data warehousing and BI reporting for enterprise clients.',
+  heroStack: ['Python', 'SQL', 'Apache Airflow', 'dbt', 'AWS', 'BigQuery'],
+}
+
+/** Animated counters. Numeric values so the counter can tween to them. */
+export const stats = [
+  { value: 7, suffix: '+', label: 'Enterprise pipelines delivered' },
+  { value: 85.6, suffix: '%', decimals: 1, label: 'Corrected delivery KPI, down from 4,032%' },
+  { value: 2, prefix: '<', suffix: '%', label: 'Validation variance against source' },
+  { value: 30, prefix: '~', suffix: '%', label: 'Manual reporting effort removed' },
+]
+
+export const about = {
+  lead: 'I build the layer between raw source systems and the dashboard someone actually makes a decision on.',
+  paragraphs: [
+    'My day-to-day is ETL/ELT pipeline design, cloud data warehousing and BI reporting for enterprise clients: extracting from web APIs and ad platforms, transforming with dbt and SQL, orchestrating with Airflow, and landing it somewhere trustworthy in BigQuery, PostgreSQL or S3.',
+    'A lot of the work is forensic. Numbers arrive wrong, and someone has to trace a metric back through the dashboard, the query and the join grain until the cause is obvious. I like that part, and I build automated validation so the same fault does not resurface quietly.',
+    'More recently I have been working further into AWS serverless architecture and AI services, which is pulling me toward Machine Learning Engineering. It reads as a continuation rather than a pivot: the same pipelines, with models as another consumer of well-modelled data.',
   ],
 }
 
-export const stats = [
-  { value: '7+', label: 'Enterprise pipelines shipped' },
-  { value: '<2%', label: 'Validation variance vs. source' },
-  { value: '~30%', label: 'Manual reporting effort removed' },
-]
-
 export const experience = [
   {
+    id: 'dotlabs',
     company: 'DotLabs',
+    site: 'dotlabs.ai',
     role: 'Data Engineer',
-    period: 'Jul 2025 - Present',
     current: true,
     blurb:
-      'Own end-to-end delivery of ingestion, transformation and BI layers for a portfolio of enterprise clients.',
+      'End-to-end delivery of ingestion, transformation and BI layers for a portfolio of enterprise clients.',
     highlights: [
       {
-        text: 'Engineered end-to-end ETL pipelines from web APIs to AWS EC2, then trained an XGBoost price-prediction model and shipped results through a Streamlit app.',
+        text: 'Built and maintained Metabase BI dashboards for enterprise clients, writing complex SQL against BigQuery data warehouses, and root-caused a critical KPI aggregation bug that had inflated a core delivery metric to 4,032%.',
+        metric: '4,032% to 85.6%',
       },
       {
-        text: 'Root-caused a critical KPI aggregation bug in a Metabase/BigQuery reporting stack that had inflated a core delivery metric to 4,032%.',
-        metric: '4,032% → 85.6%',
+        text: 'Architected a serverless AWS pipeline (SES to S3 to Lambda to Step Functions to ECS/Fargate to RDS) that ingests CSV attachments from inbound email, validates and transforms them in containerized jobs deployed via ECR, and loads results to RDS with automated status notifications.',
       },
       {
         text: 'Designed automated data-validation workflows reconciling ad-platform exports against warehouse output at daily and ad-set granularity, producing client-facing audit reports.',
         metric: 'within 2% accuracy',
       },
       {
-        text: 'Built Power BI dashboards for Escana (oil & gas), consolidating 5+ KPI streams into a single executive reporting view.',
+        text: 'Built Power BI dashboards for Escana (oil company), consolidating 5+ KPI streams into a single executive reporting view.',
         metric: '~30% less manual reporting',
       },
       {
-        text: 'Automated multi-source ingestion (Facebook Ads, Google Ads, QuickBooks) into S3 / Blob storage with Fivetran for DentalLook, eliminating manual data entry entirely.',
+        text: 'Designed dbt transformation models and Apache Airflow DAGs for the Kasper project, reducing pipeline failures through automated orchestration.',
       },
       {
-        text: 'Authored dbt transformation models and Apache Airflow DAGs for the Kasper project, cutting pipeline failures through proper orchestration and dependency management.',
+        text: 'Engineered end-to-end ETL pipelines from web APIs to AWS EC2, trained an XGBoost price-prediction model and delivered results through a Streamlit application.',
       },
       {
-        text: 'Unified Stripe, RevenueCat, Amplitude and BigQuery sources into one warehouse for Staffan and surfaced it in a real-time Looker Studio dashboard.',
+        text: 'Integrated pipelines from Stripe, RevenueCat, Amplitude and BigQuery into a unified warehouse and built a Looker Studio dashboard for real-time analytics (Staffan).',
+      },
+      {
+        text: 'Automated multi-source data ingestion (Facebook/Google Ads, QuickBooks) into S3/Blob storage using Fivetran, eliminating manual data entry (DentalLook).',
       },
     ],
-    stack: ['Airflow', 'dbt', 'BigQuery', 'AWS EC2/S3', 'Metabase', 'Power BI', 'Fivetran', 'Streamlit'],
+    stack: [
+      'Python',
+      'SQL',
+      'BigQuery',
+      'Apache Airflow',
+      'dbt',
+      'AWS Lambda',
+      'Step Functions',
+      'ECS/Fargate',
+      'RDS',
+      'Metabase',
+      'Power BI',
+      'Fivetran',
+    ],
   },
   {
+    id: 'askaan',
     company: 'Askaan Tech Labs',
+    site: null,
     role: 'Data / AI Engineer Intern',
-    period: 'Jun 2024 - Sep 2024',
     current: false,
-    blurb: 'Applied ML work across the full modelling lifecycle, from raw data to deployed regressors.',
+    blurb: 'Applied ML across the full modelling lifecycle, from raw data to deployed regressors.',
     highlights: [
       {
-        text: 'Developed and deployed regression models (Linear Regression, Random Forest) with cross-validation that outperformed baseline benchmarks.',
+        text: 'Developed and deployed regression models (Linear Regression, Random Forest) with cross-validation, outperforming baseline benchmarks.',
       },
       {
-        text: 'Performed end-to-end preprocessing (missing-value handling, outlier detection and standardization) to guarantee model-ready inputs.',
+        text: 'Performed end-to-end data preprocessing, including missing-value handling, outlier detection and standardization, to ensure model-ready inputs.',
       },
       {
-        text: 'Ran exploratory data analysis using statistical methods to drive feature engineering decisions.',
+        text: 'Conducted exploratory data analysis using statistical methods to drive feature engineering decisions.',
       },
     ],
     stack: ['Python', 'scikit-learn', 'Random Forest', 'EDA', 'Feature Engineering'],
@@ -95,21 +117,31 @@ export const experience = [
 
 export const projects = [
   {
-    title: 'Cameron: AWS Serverless Pipeline Engineering',
+    id: 'aws-serverless',
+    title: 'AWS Serverless Pipeline Engineering',
+    client: 'Cameron',
     kind: 'Cloud / Serverless',
     featured: true,
-    description:
-      'Audited a production AWS Lambda codebase of 17 undocumented function directories and grouped them into 7 logical pipelines through static analysis alone, without touching source. Then rebuilt two of them from scratch in an isolated sandbox: an SES/S3 email ingestion pipeline and a 4-stage event-driven call-notes pipeline that transcribes recordings and drafts summary notes with Claude on Amazon Bedrock.',
+    summary:
+      'Audited a production Lambda codebase of 17 undocumented functions into 7 logical pipelines, then rebuilt two of them from scratch in an isolated sandbox, including full VPC hardening.',
+    problem:
+      'A production AWS Lambda codebase had grown to 17 function directories with no organizational structure and no documentation of which AWS services or data flows each one depended on. Nothing described how the pieces fit together.',
     architecture: [
-      'Mapped 17 Lambdas onto 7 pipelines by static analysis of imports, environment variables and cross-service calls',
-      'S3-triggered Lambdas parse inbound .eml MIME messages, route CSV attachments by filename pattern and load them into PostgreSQL on RDS',
-      'Pure-Python pg8000 driver packaged as a custom deployment bundle, avoiding compiled dependencies and Lambda Layers entirely',
+      'Mapped 17 Lambdas onto 7 logical pipelines by static analysis of imports, environment variables and cross-service calls, without altering any source code',
+      'Email ingestion rebuild: S3-triggered Lambdas parse inbound MIME messages, route CSV attachments by filename pattern and load them into PostgreSQL on RDS',
+      'Packaged the pure-Python pg8000 driver as a custom deployment bundle, avoiding compiled dependencies and Lambda Layers entirely',
       'VPC hardening: RDS moved off the public internet behind scoped security groups, a Gateway endpoint for S3 and an Interface endpoint for Secrets Manager with private DNS',
-      'Call-notes flow: DynamoDB Streams as the state tracker driving four chained Lambdas through Transcribe, Bedrock and SES',
+      'Call-notes rebuild: DynamoDB Streams as the state tracker driving four chained Lambdas through Transcribe, Bedrock and SES',
       'Designed for graceful degradation when Transcribe proved unavailable in-region, substituting stand-in data in the exact output format to keep every downstream contract intact',
     ],
-    impact:
-      'Traced a silent, output-free VPC timeout to a single missing Gateway endpoint route table association using timing instrumentation',
+    results: [
+      'Seven documented pipelines recovered from an undocumented codebase: email ingestion, payroll ETL, clinical data reporting, telephony and call processing, financial reporting, spreadsheet sync and a third-party cost-optimization module',
+      'Both sandbox pipelines verified end to end, including a live database client connection after the network hardening',
+      'Traced a silent, output-free VPC timeout to a single missing Gateway endpoint route table association using timing instrumentation rather than guesswork',
+      'Database credentials rotated through Secrets Manager instead of being hardcoded',
+    ],
+    learned:
+      'Gateway and Interface VPC endpoints gate access by entirely different mechanisms, so a security group rule cannot fix a routing problem. More broadly: telling a code bug apart from a configuration, regional or account-level constraint is its own diagnostic skill, and instrumenting the timing of each network call beats guessing at rules.',
     stack: [
       'AWS Lambda',
       'S3',
@@ -124,198 +156,382 @@ export const projects = [
     ],
   },
   {
-    title: 'KPI Integrity Audit: Metabase & BigQuery',
+    id: 'kpi-audit',
+    title: 'KPI Integrity Audit',
+    client: 'Metabase & BigQuery',
     kind: 'Data Quality',
     featured: true,
-    description:
-      'A core delivery metric was reporting 4,032% on an executive dashboard. Traced the fault through the Metabase question, the underlying SQL and the BigQuery aggregation grain, then rebuilt the metric on a correct join/grain and validated it against source records.',
+    summary:
+      'A core delivery metric was reporting 4,032% on an executive dashboard. Traced the fault to the aggregation grain and rebuilt the metric correctly.',
+    problem:
+      'An executive-facing Metabase dashboard was showing a core delivery metric at 4,032%, a figure that was obviously wrong but whose cause sat somewhere across the dashboard question, the underlying SQL and the BigQuery data model.',
     architecture: [
-      'Isolated fan-out from a many-to-many join inflating the numerator',
-      'Rewrote aggregation at the correct grain with de-duplicated CTEs',
-      'Back-tested corrected output against raw source exports',
+      'Worked back through the Metabase question, the underlying SQL and the BigQuery aggregation grain',
+      'Isolated fan-out from a many-to-many join that was inflating the numerator',
+      'Rewrote the aggregation at the correct grain using de-duplicated CTEs',
+      'Back-tested the corrected output against raw source exports',
     ],
-    impact: 'Metric corrected from 4,032% to an accurate 85.6%',
+    results: [
+      'Metric corrected from 4,032% to an accurate 85.6%',
+      'Executive reporting restored to a trustworthy figure',
+    ],
+    learned:
+      'A metric that is visibly absurd is the lucky case. The same join fan-out producing a plausible-looking number is the one that quietly misleads a decision, which is what pushed me toward building validation as a standing process rather than a one-off fix.',
     stack: ['BigQuery', 'SQL', 'Metabase', 'Data Modelling'],
   },
   {
-    title: 'Ad-Spend Reconciliation & Validation Framework',
+    id: 'ad-reconciliation',
+    title: 'Ad-Spend Reconciliation Framework',
+    client: null,
     kind: 'Pipeline / QA',
     featured: true,
-    description:
-      'Automated reconciliation comparing ad-platform exports against warehouse output at daily and ad-set granularity, flagging drift before it reached client reporting and generating an audit report on every run.',
+    summary:
+      'Automated reconciliation comparing ad-platform exports against warehouse output at daily and ad-set granularity, with a client-facing audit report on every run.',
+    problem:
+      'Warehouse output and the numbers in the ad platforms could drift apart without anyone noticing until a client questioned a report. There was no systematic check that the two agreed.',
     architecture: [
-      'Scheduled extraction of platform exports vs. warehouse tables',
-      'Row-level diffing at daily × ad-set granularity with tolerance thresholds',
-      'Automated client-facing audit report generation',
+      'Scheduled extraction of ad-platform exports alongside the corresponding warehouse tables',
+      'Row-level diffing at daily and ad-set granularity with tolerance thresholds',
+      'Automated generation of client-facing audit reports on every run',
     ],
-    impact: 'Sustained accuracy within 2% across reporting periods',
+    results: [
+      'Consistent accuracy within 2% between platform exports and warehouse output',
+      'Drift surfaced before it reached client reporting rather than after',
+    ],
     stack: ['Python', 'SQL', 'BigQuery', 'Data Validation'],
   },
   {
-    title: 'Kasper: dbt + Airflow Orchestration',
+    id: 'kasper',
+    title: 'dbt and Airflow Orchestration',
+    client: 'Kasper',
     kind: 'Data Platform',
     featured: true,
-    description:
-      'Designed the transformation layer as modular dbt models and orchestrated the full load with Apache Airflow DAGs, replacing brittle ad-hoc runs with dependency-aware, retryable scheduling.',
+    summary:
+      'Designed the transformation layer as modular dbt models and orchestrated the full load with Airflow DAGs, replacing brittle ad-hoc runs.',
+    problem:
+      'Transformations were running ad-hoc, which meant failures were discovered late and reruns depended on someone remembering the correct order.',
     architecture: [
-      'Layered dbt models (staging → intermediate → marts)',
-      'Airflow DAGs with task dependencies, retries and alerting',
-      'Warehouse-native transformations for testable, versioned SQL',
+      'Layered dbt models: staging, then intermediate, then marts',
+      'Airflow DAGs with explicit task dependencies, retries and alerting',
+      'Warehouse-native transformations so the SQL is testable and versioned',
     ],
-    impact: 'Materially fewer pipeline failures through automated orchestration',
+    results: ['Reduced pipeline failures through automated, dependency-aware orchestration'],
     stack: ['dbt', 'Apache Airflow', 'SQL', 'Data Warehousing'],
   },
   {
-    title: 'Lakehouse Pipeline: Spark on Databricks',
-    kind: 'Big Data',
-    featured: true,
-    description:
-      'A medallion-architecture lakehouse built on Databricks: raw source files land in bronze, PySpark jobs clean and conform them into silver, and business-grain Delta tables serve gold. Orchestrated end to end rather than run by hand.',
-    architecture: [
-      'Bronze → silver → gold Delta Lake layers with schema enforcement and time travel',
-      'PySpark transformations with partitioning and predicate pushdown for large scans',
-      'Azure Data Factory / Airflow triggering Databricks jobs on a dependency-aware schedule',
-      'Gold tables published to Snowflake for downstream BI consumption',
-    ],
-    stack: ['Apache Spark', 'Databricks', 'PySpark', 'Delta Lake', 'Azure Data Factory', 'Snowflake'],
-  },
-  {
-    title: 'Warehouse Copilot: RAG over Data Platform Metadata',
-    kind: 'AI / LLM',
-    featured: true,
-    description:
-      'A retrieval-augmented assistant that answers questions about the data platform itself: what a table means, which model produces it, where a column comes from. Indexes dbt docs, schema metadata and column descriptions so analysts stop asking the same questions in Slack.',
-    architecture: [
-      'Ingest dbt manifest, catalog metadata and column-level docs as the knowledge corpus',
-      'Chunk + embed into a vector store, retrieving by semantic similarity at query time',
-      'Grounded LLM responses that cite the source model rather than free-associating',
-      'Containerised with Docker and served behind a FastAPI endpoint',
-    ],
-    stack: ['Python', 'LLM / RAG', 'Vector Search', 'dbt', 'FastAPI', 'Docker'],
-  },
-  {
-    title: 'Escana: Executive Power BI Reporting',
+    id: 'escana',
+    title: 'Executive Power BI Reporting',
+    client: 'Escana',
     kind: 'BI & Analytics',
     featured: false,
-    description:
-      'Consolidated 5+ separate KPI streams for an oil & gas client into a single executive Power BI view, replacing a fragmented manual reporting cycle.',
+    summary:
+      'Consolidated 5+ separate KPI streams for an oil company into a single executive Power BI view.',
+    problem:
+      'Executive reporting for an oil company was assembled by hand from more than five separate KPI streams, making the reporting cycle slow and repetitive.',
     architecture: [
-      'Unified data model across 5+ KPI sources',
-      'Single executive-level reporting surface',
+      'Unified data model spanning 5+ KPI sources',
+      'A single executive-level reporting surface in Power BI',
     ],
-    impact: '~30% reduction in manual reporting effort',
+    results: [
+      '5+ KPI streams consolidated into one executive view',
+      'Approximately 30% reduction in manual reporting effort',
+    ],
     stack: ['Power BI', 'SQL', 'Data Modelling'],
   },
   {
-    title: 'Staffan: Unified Product Analytics Warehouse',
+    id: 'staffan',
+    title: 'Unified Product Analytics Warehouse',
+    client: 'Staffan',
     kind: 'Data Platform',
     featured: false,
-    description:
-      'Integrated Stripe, RevenueCat, Amplitude and BigQuery into one warehouse and exposed real-time revenue and engagement analytics through Looker Studio.',
+    summary:
+      'Integrated Stripe, RevenueCat, Amplitude and BigQuery into one warehouse, surfaced through a real-time Looker Studio dashboard.',
+    problem:
+      'Revenue and product engagement data lived in four separate systems, so no single place answered how the product was actually performing.',
     architecture: [
-      'Multi-source ingestion into a unified warehouse schema',
-      'Real-time Looker Studio reporting layer',
+      'Multi-source ingestion from Stripe, RevenueCat and Amplitude into a unified warehouse schema',
+      'A real-time Looker Studio reporting layer on top of BigQuery',
     ],
-    impact: 'Single real-time view of revenue + product engagement',
+    results: ['A single real-time view of revenue and product engagement'],
     stack: ['BigQuery', 'Stripe', 'RevenueCat', 'Amplitude', 'Looker Studio'],
   },
   {
-    title: 'Blood Cell Classification: Computer Vision',
+    id: 'dentallook',
+    title: 'Multi-Source Ingestion Automation',
+    client: 'DentalLook',
+    kind: 'Pipeline / QA',
+    featured: false,
+    summary:
+      'Automated ingestion from Facebook/Google Ads and QuickBooks into S3/Blob storage with Fivetran, removing manual data entry entirely.',
+    problem:
+      'Marketing and accounting data was being entered by hand from Facebook Ads, Google Ads and QuickBooks, which is slow and a reliable source of transcription errors.',
+    architecture: [
+      'Fivetran connectors for Facebook Ads, Google Ads and QuickBooks',
+      'Automated landing into S3 and Blob storage on a managed schedule',
+    ],
+    results: ['Manual data entry eliminated for the ingested sources'],
+    stack: ['Fivetran', 'AWS S3', 'Azure Blob Storage', 'Facebook Ads', 'Google Ads', 'QuickBooks'],
+  },
+  {
+    id: 'price-prediction',
+    title: 'Price Prediction ETL and Model Delivery',
+    client: null,
     kind: 'Machine Learning',
     featured: false,
-    description:
-      'Trained and compared MobileNet, InceptionV3 and Siamese network architectures to classify blood cell types, benchmarking transfer learning against similarity-based approaches.',
+    summary:
+      'End-to-end ETL from web APIs to AWS EC2, an XGBoost price-prediction model trained on the result, delivered through a Streamlit application.',
+    problem:
+      'Price prediction needed both a reliable feed of source data and a way for non-engineers to actually interact with the model output.',
     architecture: [
-      'Transfer learning with MobileNet and InceptionV3 backbones',
-      'Siamese network for similarity-based classification',
-      'Augmentation pipeline for class balance',
+      'End-to-end ETL pipelines pulling from web APIs into AWS EC2',
+      'XGBoost model trained for price prediction on the ingested data',
+      'Streamlit application as the delivery surface for model results',
     ],
-    impact: 'High classification accuracy across cell types',
+    results: ['Model results delivered to users through a working Streamlit application'],
+    stack: ['Python', 'XGBoost', 'AWS EC2', 'Streamlit', 'REST APIs'],
+  },
+  {
+    id: 'cell-classification',
+    title: 'Blood Cell Classification',
+    client: null,
+    kind: 'Machine Learning',
+    featured: false,
+    summary:
+      'Trained and compared MobileNet, InceptionV3 and Siamese network architectures to classify blood cell types.',
+    problem:
+      'Classifying blood cell types from images, and establishing whether transfer learning or a similarity-based approach performed better on the task.',
+    architecture: [
+      'Transfer learning using MobileNet and InceptionV3 backbones',
+      'A Siamese network for similarity-based classification',
+      'Augmentation pipeline to address class balance',
+    ],
+    results: ['High classification accuracy across blood cell types'],
     stack: ['Python', 'TensorFlow', 'MobileNet', 'InceptionV3', 'Computer Vision'],
   },
 ]
 
-export const skillGroups = [
+/**
+ * Toolkit visualisation. Deliberately presented as a map of tools across pipeline
+ * stages, NOT as a single production architecture.
+ */
+export const architectureLayers = [
   {
-    title: 'Languages & Development',
-    items: ['Python', 'SQL', 'PySpark', 'Node.js', 'FastAPI', 'Flask', 'REST APIs', 'Web Scraping'],
+    stage: 'Sources',
+    caption: 'Where the data comes from',
+    nodes: [
+      { name: 'Web APIs', note: 'Extracted into ETL pipelines landing on AWS EC2.' },
+      {
+        name: 'Facebook / Google Ads',
+        note: 'Ad-platform exports ingested via Fivetran and reconciled against warehouse output.',
+      },
+      { name: 'Stripe', note: 'Revenue data integrated into a unified warehouse for Staffan.' },
+      { name: 'RevenueCat', note: 'Subscription data unified alongside Stripe and Amplitude.' },
+      { name: 'Amplitude', note: 'Product engagement events joined into the Staffan warehouse.' },
+      { name: 'QuickBooks', note: 'Accounting data automated into S3/Blob storage for DentalLook.' },
+      { name: 'Inbound Email', note: 'CSV attachments arriving over SES as a pipeline trigger.' },
+    ],
   },
   {
-    title: 'Big Data & Processing',
+    stage: 'Ingestion',
+    caption: 'Getting it in, reliably',
+    nodes: [
+      { name: 'Fivetran', note: 'Managed connectors replacing manual data entry for DentalLook.' },
+      {
+        name: 'AWS Lambda',
+        note: 'S3-triggered functions parsing MIME email, routing CSVs and loading RDS.',
+      },
+      {
+        name: 'Step Functions',
+        note: 'Coordinating stages of the serverless email ingestion pipeline.',
+      },
+      {
+        name: 'ECS / Fargate',
+        note: 'Containerized validation and transformation jobs deployed via ECR.',
+      },
+      { name: 'Python / boto3', note: 'The glue for custom extraction and AWS service integration.' },
+      { name: 'Zapier', note: 'Lightweight automation between SaaS tools.' },
+    ],
+  },
+  {
+    stage: 'Transformation',
+    caption: 'Making it trustworthy',
+    nodes: [
+      { name: 'dbt', note: 'Layered staging, intermediate and mart models for the Kasper project.' },
+      {
+        name: 'Apache Airflow',
+        note: 'DAGs with dependencies, retries and alerting driving the load.',
+      },
+      {
+        name: 'SQL',
+        note: 'Complex warehouse SQL, including rebuilding a KPI at the correct grain.',
+      },
+      {
+        name: 'Data Validation',
+        note: 'Row-level reconciliation of ad exports against warehouse output.',
+      },
+    ],
+  },
+  {
+    stage: 'Storage',
+    caption: 'Where it lands',
+    nodes: [
+      {
+        name: 'BigQuery',
+        note: 'Primary warehouse behind Metabase dashboards and client reporting.',
+      },
+      {
+        name: 'PostgreSQL / RDS',
+        note: 'Target for the email ingestion pipeline, hardened behind a private VPC.',
+      },
+      {
+        name: 'DynamoDB',
+        note: 'Streams-backed state tracker driving the call-notes pipeline.',
+      },
+      { name: 'AWS S3', note: 'Landing zone for email attachments and multi-source ingestion.' },
+      { name: 'MySQL / MariaDB', note: 'Relational sources and targets across client systems.' },
+    ],
+  },
+  {
+    stage: 'Search & AI',
+    caption: 'Beyond the warehouse',
+    nodes: [
+      {
+        name: 'OpenSearch',
+        note: 'Search and log analytics engine within my data-engineering toolkit.',
+      },
+      { name: 'Amazon Bedrock', note: 'Claude models drafting call summary notes from transcripts.' },
+      {
+        name: 'Amazon Transcribe',
+        note: 'Speech-to-text stage in the event-driven call-notes pipeline.',
+      },
+      { name: 'XGBoost', note: 'Price-prediction model trained on API-sourced data.' },
+    ],
+  },
+  {
+    stage: 'Delivery',
+    caption: 'What people actually open',
+    nodes: [
+      {
+        name: 'Metabase',
+        note: 'Client-facing BI dashboards backed by complex SQL against BigQuery.',
+      },
+      { name: 'Power BI', note: 'Executive reporting for Escana, consolidating 5+ KPI streams.' },
+      { name: 'Looker Studio', note: 'Real-time revenue and engagement analytics for Staffan.' },
+      { name: 'Streamlit', note: 'Delivery surface for XGBoost price-prediction results.' },
+      { name: 'Qlik', note: 'BI and analytics tooling.' },
+      { name: 'Mixpanel', note: 'Product analytics and KPI reporting.' },
+    ],
+  },
+]
+
+export const stackGroups = [
+  {
+    title: 'Languages',
     items: [
-      'Apache Spark',
-      'Databricks',
-      'PySpark',
-      'Delta Lake',
-      'Distributed Processing',
-      'Batch & Streaming',
+      { name: 'Python', note: 'Primary language for ETL, AWS Lambda functions and model work.' },
+      { name: 'SQL', note: 'Warehouse modelling, complex analytical queries and KPI correction.' },
+      { name: 'Node.js', note: 'Service and API development.' },
+      { name: 'HTML / CSS', note: 'Front-end fundamentals for delivery surfaces.' },
+    ],
+  },
+  {
+    title: 'Data & Storage',
+    items: [
+      { name: 'BigQuery', note: 'Cloud warehouse behind Metabase and client BI reporting.' },
+      { name: 'PostgreSQL', note: 'RDS target for the serverless email ingestion pipeline.' },
+      { name: 'MySQL / MariaDB', note: 'Relational databases across client systems.' },
+      { name: 'DynamoDB', note: 'Streams-driven state tracking for event-driven pipelines.' },
+      { name: 'OpenSearch', note: 'Search and log analytics engine.' },
+      { name: 'Data Warehousing', note: 'Dimensional modelling and warehouse design.' },
     ],
   },
   {
     title: 'Pipelines & Orchestration',
     items: [
-      'ETL / ELT Pipelines',
-      'Apache Airflow',
-      'dbt',
-      'Azure Data Factory',
-      'AWS Glue',
-      'Fivetran',
-      'Zapier',
-      'Data Validation & QA',
-    ],
-  },
-  {
-    title: 'Databases & Warehousing',
-    items: [
-      'Snowflake',
-      'Google BigQuery',
-      'PostgreSQL',
-      'DynamoDB',
-      'MySQL',
-      'MariaDB',
-      'OpenSearch',
-      'Data Warehousing',
-      'Dimensional Modelling',
+      { name: 'Apache Airflow', note: 'DAG orchestration with dependencies, retries and alerting.' },
+      { name: 'dbt', note: 'Layered, testable, version-controlled warehouse transformations.' },
+      {
+        name: 'ETL / ELT Design',
+        note: 'End-to-end pipeline design from source API to reporting layer.',
+      },
+      { name: 'Fivetran', note: 'Managed multi-source ingestion into S3 and Blob storage.' },
+      { name: 'Zapier', note: 'Lightweight automation between SaaS tools.' },
+      {
+        name: 'Data Validation & QA',
+        note: 'Automated reconciliation and client-facing audit reporting.',
+      },
     ],
   },
   {
     title: 'Cloud & Infrastructure',
     items: [
-      'AWS (Lambda, EC2, S3, Glue, RDS)',
-      'Serverless & Event-Driven Architecture',
-      'VPC & Network Security',
-      'AWS Secrets Manager',
-      'Azure (ADF, Blob Storage)',
-      'Docker',
-      'Kubernetes',
-      'CI/CD for Data Engineering',
-      'GitHub Actions',
+      {
+        name: 'AWS Lambda',
+        note: 'Event-driven functions across email ingestion and call processing.',
+      },
+      { name: 'Step Functions', note: 'Orchestration across stages of a serverless AWS pipeline.' },
+      { name: 'ECS / Fargate', note: 'Containerized transformation jobs deployed through ECR.' },
+      { name: 'AWS S3', note: 'Object storage and event source for triggered pipelines.' },
+      { name: 'AWS RDS', note: 'Managed PostgreSQL, hardened behind a private VPC.' },
+      { name: 'AWS EC2', note: 'Compute for ETL pipelines feeding model training.' },
+      { name: 'Amazon SES', note: 'Inbound email ingestion and outbound status notifications.' },
+      {
+        name: 'VPC & Security Groups',
+        note: 'Private networking, endpoint routing and least-exposure design.',
+      },
+      { name: 'Secrets Manager', note: 'Credential rotation in place of hardcoded secrets.' },
+      { name: 'Docker', note: 'Containerizing jobs and services for consistent deployment.' },
     ],
   },
   {
     title: 'BI & Analytics',
-    items: ['Metabase', 'Power BI', 'Looker Studio', 'Streamlit', 'Qlik', 'Mixpanel', 'KPI Reporting'],
+    items: [
+      { name: 'Metabase', note: 'Client-facing dashboards over BigQuery.' },
+      { name: 'Power BI', note: 'Executive KPI consolidation for Escana.' },
+      { name: 'Looker Studio', note: 'Real-time analytics dashboard for Staffan.' },
+      { name: 'Streamlit', note: 'Lightweight delivery of model output to end users.' },
+      { name: 'Qlik', note: 'BI and analytics tooling.' },
+      { name: 'Mixpanel', note: 'Product analytics and KPI reporting.' },
+    ],
   },
   {
     title: 'AI & Machine Learning',
     items: [
-      'LLM / RAG Applications',
-      'Amazon Bedrock',
-      'Vector Search & Embeddings',
-      'XGBoost',
-      'Random Forest',
-      'Regression',
-      'Feature Engineering',
-      'Computer Vision',
-      'NLP',
+      { name: 'Amazon Bedrock', note: 'Claude models generating summary notes inside a pipeline.' },
+      { name: 'Amazon Transcribe', note: 'Speech-to-text as an event-driven pipeline stage.' },
+      { name: 'XGBoost', note: 'Gradient-boosted model for price prediction.' },
+      { name: 'Random Forest', note: 'Cross-validated regression outperforming baselines.' },
+      { name: 'Regression', note: 'Linear and ensemble regression modelling.' },
+      { name: 'Feature Engineering', note: 'EDA-driven feature decisions and preprocessing.' },
+      {
+        name: 'Computer Vision',
+        note: 'MobileNet, InceptionV3 and Siamese networks for cell classification.',
+      },
+      { name: 'NLP', note: 'Text processing within data and AI workflows.' },
     ],
   },
+]
+
+export const exploring = [
+  {
+    name: 'Machine Learning Engineering',
+    note: 'Moving from delivering data for models to owning the models themselves.',
+  },
+  {
+    name: 'MLOps',
+    note: 'Applying the orchestration and validation discipline of data engineering to model lifecycles.',
+  },
+  {
+    name: 'LLM Applications',
+    note: 'Building on the Bedrock integration work from the call-notes pipeline.',
+  },
+  { name: 'RAG', note: 'Retrieval over warehouse and metadata corpora as a grounding layer.' },
+  { name: 'Scalable Data Systems', note: 'Distributed processing and streaming beyond batch ETL.' },
 ]
 
 export const education = {
   school: 'University of Central Punjab',
   degree: 'B.S. Computer Science',
-  period: 'Nov 2021 - Jul 2025',
   gpa: '3.74 / 4.0',
   coursework: [
     'Machine Learning',
@@ -328,8 +544,10 @@ export const education = {
 }
 
 export const navLinks = [
+  { href: '#home', label: 'Home' },
+  { href: '#about', label: 'About' },
   { href: '#experience', label: 'Experience' },
   { href: '#projects', label: 'Projects' },
-  { href: '#skills', label: 'Skills' },
+  { href: '#stack', label: 'Stack' },
   { href: '#contact', label: 'Contact' },
 ]
