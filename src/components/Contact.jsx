@@ -36,11 +36,11 @@ const channels = [
 
 export default function Contact() {
   return (
-    <section id="contact" className="scroll-mt-24 border-t border-line py-24 sm:py-28 lg:py-32">
+    <section id="contact" className="scroll-mt-24 border-t border-line-soft py-24 sm:py-28 lg:py-32">
       <div className="shell">
         <Reveal>
           <div className="flex items-center gap-3">
-            <span className="label text-accent">06</span>
+            <span className="label text-violet">07</span>
             <span className="label">Contact</span>
             <span className="h-px flex-1 bg-line" />
           </div>
@@ -79,9 +79,9 @@ export default function Contact() {
                     <a
                       href={href}
                       {...(external ? { target: '_blank', rel: 'noreferrer noopener' } : {})}
-                      className="panel panel-hover group flex items-center gap-3 p-4"
+                      className="panel group flex items-center gap-3 p-4"
                     >
-                      <span className="grid h-9 w-9 shrink-0 place-items-center rounded-lg border border-line bg-white/[0.02] text-muted transition-colors group-hover:border-accent/35 group-hover:text-accent">
+                      <span className="grid h-9 w-9 shrink-0 place-items-center rounded-lg border border-line bg-white/[0.02] text-muted transition-colors group-hover:border-violet/35 group-hover:text-violet">
                         <Icon className="h-4 w-4" />
                       </span>
                       <span className="min-w-0">
@@ -109,14 +109,14 @@ export default function Contact() {
                   rel="noreferrer noopener"
                   className="group mt-5 flex items-center gap-4"
                 >
-                  <span className="grid h-12 w-12 shrink-0 place-items-center rounded-xl border border-line bg-white/[0.03] text-bright transition-colors group-hover:border-accent/40 group-hover:text-accent">
+                  <span className="grid h-12 w-12 shrink-0 place-items-center rounded-xl border border-line bg-white/[0.03] text-bright transition-colors group-hover:border-violet/40 group-hover:text-violet">
                     <GitHubIcon className="h-5 w-5" />
                   </span>
                   <span className="min-w-0">
                     <span className="block font-mono text-sm text-bright">
                       {profile.githubHandle}
                     </span>
-                    <span className="mt-0.5 flex items-center gap-1 text-xs text-muted transition-colors group-hover:text-accent">
+                    <span className="mt-0.5 flex items-center gap-1 text-xs text-muted transition-colors group-hover:text-violet">
                       View profile and repositories
                       <ArrowUpRightIcon className="h-3 w-3" />
                     </span>

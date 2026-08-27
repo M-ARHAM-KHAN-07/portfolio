@@ -12,7 +12,7 @@ Live: **https://m-arham-khan-07.github.io/portfolio/**
 | Styling    | Tailwind CSS v4 (`@tailwindcss/vite`), no config file |
 | Type       | Inter (sans) + IBM Plex Mono (technical labels) |
 | Icons      | Inline SVG, no icon dependency                   |
-| Motion     | CSS transitions + one lightweight canvas         |
+| Motion     | CSS transitions, SVG, `offset-path` particles    |
 | Deployment | GitHub Actions to GitHub Pages                   |
 
 Runtime dependencies are React and React DOM only.
@@ -60,13 +60,30 @@ are shown as measured outcomes, so do not add numbers that are not genuine.
 
 ## Sections
 
-1. **Hero**: role eyebrow, name, tagline, CTAs, and a canvas node-field backdrop
-2. **About**: prose, animated stat counters, education, currently exploring
-3. **Experience**: tablist timeline; select a role to reveal its work and stack
-4. **Projects**: filterable cards, each opening a Problem / Architecture / Results / Learned modal
-5. **Toolkit map**: tools by pipeline stage, with a live detail rail on hover or tap
+Each has a deliberately different rhythm so the page never reads as one long
+list of identical cards.
+
+1. **Hero**: interactive graph of the real stack with data flowing along the edges
+2. **About**: editorial prose, a terminal, and four measured outcomes as counters
+3. **Experience**: tablist timeline whose rail fills as you scroll
+4. **Projects**: cursor-tilted cards opening a Problem / Architecture / Results / Learned modal
+5. **Pipeline**: tools by stage, with particles falling between stages and a detail rail
 6. **Stack**: grouped technologies, each with a note on how it was used
-7. **Contact**: CTA, direct channels, GitHub link
+7. **Exploring**: large stacked type, the direction toward ML Engineering
+8. **Contact**: CTA, direct channels, GitHub link
+
+### Interaction notes
+
+- The hero graph is SVG. Particles ride each edge with CSS `offset-path`, so the
+  animation is compositor-driven with no per-frame JavaScript. Nodes are real
+  anchors into the stack section.
+- Headings use per-character kinetic entry via `Kinetic`. One exception: the
+  gradient name animates as a whole line, because a transformed child cannot be
+  painted through a parent's `background-clip: text`.
+- Cursor tilt and magnetic buttons write CSS custom properties from a rAF
+  callback, never React state, so pointer movement causes no re-renders. Both
+  are gated behind `(hover: hover) and (pointer: fine)`.
+- The terminal in About is an easter egg, not navigation. Try `help`.
 
 ## Deploying
 
@@ -91,7 +108,7 @@ Pages source is set to **GitHub Actions** under Settings → Pages.
 - The project modal traps Tab, closes on Escape, and restores focus to the trigger
 - Stack notes are visible by default and only collapse behind hover where a fine pointer exists,
   so touch users are never locked out of the content
-- All text tokens meet WCAG AA against the page background (verified: muted 5.29:1)
+- All text tokens meet WCAG AA against the page background (lowest is muted at 6.14:1)
 - `prefers-reduced-motion` disables reveals, transitions and the canvas animation loop
-- The hero canvas caps DPR at 2, scales node count to viewport area, and stops its RAF loop when
-  scrolled out of view or the tab is hidden
+- Motion is CSS-driven; `prefers-reduced-motion` disables reveals, kinetic type, tilt,
+  magnetism and every particle

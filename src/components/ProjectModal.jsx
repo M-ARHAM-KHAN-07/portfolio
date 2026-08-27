@@ -5,7 +5,7 @@ function Block({ icon: Icon, title, children }) {
   return (
     <section className="mt-8 first:mt-0">
       <div className="mb-3 flex items-center gap-2.5">
-        <Icon className="h-4 w-4 text-accent" />
+        <Icon className="h-4 w-4 text-violet" />
         <h4 className="label text-body">{title}</h4>
       </div>
       {children}
@@ -76,7 +76,7 @@ export default function ProjectModal({ project, onClose }) {
         <div className="flex items-start justify-between gap-4 border-b border-line px-5 py-5 sm:px-7">
           <div className="min-w-0">
             <div className="flex flex-wrap items-center gap-2">
-              <span className="tag tag-accent">{project.kind}</span>
+              <span className="tag tag-violet">{project.kind}</span>
               {project.client && <span className="tag">{project.client}</span>}
             </div>
             <h3
@@ -92,7 +92,7 @@ export default function ProjectModal({ project, onClose }) {
             type="button"
             onClick={onClose}
             aria-label="Close case study"
-            className="shrink-0 rounded-lg border border-line p-2 text-muted transition-colors hover:border-accent/40 hover:text-bright"
+            className="shrink-0 rounded-lg border border-line p-2 text-muted transition-colors hover:border-violet/40 hover:text-bright"
           >
             <CloseIcon className="h-4 w-4" />
           </button>
@@ -108,7 +108,7 @@ export default function ProjectModal({ project, onClose }) {
             <ul className="space-y-2.5">
               {project.architecture.map((step) => (
                 <li key={step} className="flex gap-3 text-sm leading-relaxed text-body">
-                  <span className="mt-[9px] h-1 w-1 shrink-0 rounded-full bg-accent/70" />
+                  <span className="mt-[9px] h-1 w-1 shrink-0 rounded-full bg-violet/70" />
                   {step}
                 </li>
               ))}
@@ -119,7 +119,7 @@ export default function ProjectModal({ project, onClose }) {
             <ul className="space-y-2.5">
               {project.results.map((r) => (
                 <li key={r} className="flex gap-3 text-sm leading-relaxed text-body">
-                  <span className="mt-[9px] h-1 w-1 shrink-0 rounded-full bg-signal" />
+                  <span className="mt-[9px] h-1 w-1 shrink-0 rounded-full bg-lime" />
                   {r}
                 </li>
               ))}

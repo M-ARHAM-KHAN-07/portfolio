@@ -1,20 +1,51 @@
-import { useRef, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { experience } from '../data/resume'
 import { CheckIcon } from './Icons'
-import Reveal from './Reveal'
+import Reveal, { useInView } from './Reveal'
 import Section from './Section'
 
 export default function Experience() {
   const [activeIndex, setActiveIndex] = useState(0)
+  const [fill, setFill] = useState(0)
   const tabRefs = useRef([])
+  const railRef = useRef(null)
+  const [sectionRef, inView] = useInView({ threshold: 0.05 })
   const active = experience[activeIndex]
 
-  /* Roving focus so the rail behaves like a real tablist */
+  /* The rail draws itself in as the section moves through the viewport */
+  useEffect(() => {
+    if (!inView) return
+    let frame = null
+
+    const onScroll = () => {
+      if (frame) return
+      frame = requestAnimationFrame(() => {
+        const el = railRef.current
+        if (el) {
+          const r = el.getBoundingClientRect()
+          const start = window.innerHeight * 0.85
+          const travelled = (start - r.top) / (r.height + start * 0.35)
+          setFill(Math.max(0, Math.min(1, travelled)))
+        }
+        frame = null
+      })
+    }
+
+    onScroll()
+    window.addEventListener('scroll', onScroll, { passive: true })
+    return () => {
+      window.removeEventListener('scroll', onScroll)
+      if (frame) cancelAnimationFrame(frame)
+    }
+  }, [inView])
+
   const onKeyDown = (e) => {
     const last = experience.length - 1
     let next = null
-    if (e.key === 'ArrowDown' || e.key === 'ArrowRight') next = activeIndex === last ? 0 : activeIndex + 1
-    if (e.key === 'ArrowUp' || e.key === 'ArrowLeft') next = activeIndex === 0 ? last : activeIndex - 1
+    if (e.key === 'ArrowDown' || e.key === 'ArrowRight')
+      next = activeIndex === last ? 0 : activeIndex + 1
+    if (e.key === 'ArrowUp' || e.key === 'ArrowLeft')
+      next = activeIndex === 0 ? last : activeIndex - 1
     if (e.key === 'Home') next = 0
     if (e.key === 'End') next = last
     if (next === null) return
@@ -30,23 +61,33 @@ export default function Experience() {
       eyebrow="Experience"
       title="An engineering track record"
       lede="Select a role to see the systems, responsibilities and outcomes behind it."
-      className="border-t border-line"
+      className="border-t border-line-soft"
     >
-      <div className="grid gap-8 lg:grid-cols-12 lg:gap-12">
-        {/* Rail */}
+      <div ref={sectionRef} className="grid gap-8 lg:grid-cols-12 lg:gap-12">
         <div className="lg:col-span-4">
           <Reveal>
             <div
+              ref={railRef}
               role="tablist"
               aria-label="Roles"
               aria-orientation="vertical"
               onKeyDown={onKeyDown}
-              className="relative flex gap-3 overflow-x-auto pb-2 lg:flex-col lg:overflow-visible lg:pb-0 lg:pl-6"
+              className="relative flex gap-3 overflow-x-auto pb-2 lg:flex-col lg:overflow-visible lg:pb-0 lg:pl-7"
             >
-              {/* Vertical rail line, desktop only */}
+              {/* Track, then the progressive fill over it */}
               <span
                 aria-hidden
                 className="absolute left-[3px] top-2 bottom-2 hidden w-px bg-line lg:block"
+              />
+              <span
+                aria-hidden
+                className="absolute left-[3px] top-2 hidden w-px origin-top lg:block"
+                style={{
+                  height: `calc(${fill * 100}% - 1rem)`,
+                  maxHeight: 'calc(100% - 1rem)',
+                  background: 'linear-gradient(180deg, var(--color-violet), var(--color-cyan))',
+                  transition: 'height 0.15s linear',
+                }}
               />
 
               {experience.map((job, i) => {
@@ -63,16 +104,19 @@ export default function Experience() {
                     onClick={() => setActiveIndex(i)}
                     className={`relative shrink-0 rounded-xl border p-4 text-left transition-all duration-300 lg:shrink ${
                       selected
-                        ? 'border-accent/40 bg-overlay/70'
-                        : 'border-line bg-raised/40 hover:border-line hover:bg-overlay/40'
+                        ? 'border-violet/45 bg-violet/[0.07]'
+                        : 'border-line bg-raised/40 hover:border-violet/25 hover:bg-overlay/40'
                     }`}
                   >
-                    {/* Rail node */}
                     <span
                       aria-hidden
-                      className={`absolute -left-6 top-6 hidden h-[7px] w-[7px] -translate-x-1/2 rounded-full ring-4 ring-base transition-colors lg:block ${
-                        selected ? 'bg-accent' : 'bg-line'
-                      }`}
+                      className="absolute -left-7 top-6 hidden h-[9px] w-[9px] -translate-x-1/2 rounded-full ring-4 ring-base transition-all duration-300 lg:block"
+                      style={{
+                        background: selected ? 'var(--color-violet)' : 'var(--color-line)',
+                        transform: selected
+                          ? 'translateX(-50%) scale(1.15)'
+                          : 'translateX(-50%) scale(1)',
+                      }}
                     />
                     <span
                       className={`block text-sm font-medium transition-colors ${
@@ -82,9 +126,9 @@ export default function Experience() {
                       {job.role}
                     </span>
                     <span className="mt-1 flex items-center gap-2">
-                      <span className="font-mono text-xs text-accent">{job.company}</span>
+                      <span className="font-mono text-xs text-violet">{job.company}</span>
                       {job.current && (
-                        <span className="rounded border border-signal/25 bg-signal/10 px-1.5 py-0.5 font-mono text-[9px] uppercase tracking-wider text-signal">
+                        <span className="rounded border border-lime/30 bg-lime/10 px-1.5 py-0.5 font-mono text-[9px] uppercase tracking-wider text-lime">
                           Current
                         </span>
                       )}
@@ -99,7 +143,6 @@ export default function Experience() {
           </Reveal>
         </div>
 
-        {/* Detail panel */}
         <div className="lg:col-span-8">
           <Reveal delay={80}>
             <div
@@ -118,11 +161,11 @@ export default function Experience() {
               <ul className="space-y-3.5">
                 {active.highlights.map((item) => (
                   <li key={item.text} className="flex gap-3">
-                    <CheckIcon className="mt-[3px] h-4 w-4 shrink-0 text-accent/70" />
+                    <CheckIcon className="mt-[3px] h-4 w-4 shrink-0 text-violet" />
                     <p className="text-sm leading-relaxed text-body">
                       {item.text}
                       {item.metric && (
-                        <span className="ml-2 inline-block whitespace-nowrap rounded border border-signal/25 bg-signal/10 px-1.5 py-0.5 font-mono text-[11px] leading-none text-signal">
+                        <span className="ml-2 inline-block whitespace-nowrap rounded border border-lime/30 bg-lime/10 px-1.5 py-0.5 font-mono text-[11px] leading-none text-lime">
                           {item.metric}
                         </span>
                       )}

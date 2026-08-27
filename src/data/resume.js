@@ -25,10 +25,32 @@ export const profile = {
 
 /** Animated counters. Numeric values so the counter can tween to them. */
 export const stats = [
-  { value: 7, suffix: '+', label: 'Enterprise pipelines delivered' },
-  { value: 85.6, suffix: '%', decimals: 1, label: 'Corrected delivery KPI, down from 4,032%' },
-  { value: 2, prefix: '<', suffix: '%', label: 'Validation variance against source' },
-  { value: 30, prefix: '~', suffix: '%', label: 'Manual reporting effort removed' },
+  {
+    value: 85.6,
+    suffix: '%',
+    decimals: 1,
+    label: 'Delivery KPI corrected',
+    context: 'was reporting 4,032%',
+  },
+  {
+    value: 17,
+    label: 'Undocumented Lambdas mapped',
+    context: 'grouped into 7 pipelines',
+  },
+  {
+    value: 2,
+    prefix: '<',
+    suffix: '%',
+    label: 'Validation variance',
+    context: 'exports vs. warehouse',
+  },
+  {
+    value: 30,
+    prefix: '~',
+    suffix: '%',
+    label: 'Manual reporting removed',
+    context: 'Escana executive view',
+  },
 ]
 
 export const about = {

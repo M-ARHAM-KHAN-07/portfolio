@@ -73,11 +73,11 @@ export default function Navbar() {
               className="group flex items-center gap-2.5"
               aria-label="Back to top"
             >
-              <span className="grid h-8 w-8 place-items-center rounded-lg border border-line bg-white/[0.03] font-mono text-[11px] font-semibold text-accent transition-colors group-hover:border-accent/40">
+              <span className="grid h-8 w-8 place-items-center rounded-lg border border-line bg-white/[0.03] font-mono text-[11px] font-semibold text-violet transition-colors group-hover:border-violet/40">
                 AK
               </span>
               <span className="hidden font-mono text-sm font-medium text-bright sm:inline">
-                arham<span className="text-accent">.</span>dev
+                arham<span className="text-violet">.</span>dev
               </span>
             </a>
 
@@ -95,7 +95,7 @@ export default function Navbar() {
                   >
                     {link.label}
                     {isActive && (
-                      <span className="absolute inset-x-3.5 -bottom-px h-px bg-accent" />
+                      <span className="absolute inset-x-3.5 -bottom-px h-px bg-violet" />
                     )}
                   </a>
                 )
@@ -106,7 +106,7 @@ export default function Navbar() {
               <a
                 href={resumeHref}
                 download
-                className="hidden items-center gap-2 rounded-lg border border-line bg-white/[0.02] px-3.5 py-2 font-mono text-xs text-body transition-colors hover:border-accent/40 hover:text-bright sm:inline-flex"
+                className="hidden items-center gap-2 rounded-lg border border-line bg-white/[0.02] px-3.5 py-2 font-mono text-xs text-body transition-colors hover:border-violet/40 hover:text-bright sm:inline-flex"
               >
                 <DownloadIcon className="h-3.5 w-3.5" />
                 Resume
@@ -151,7 +151,7 @@ export default function Navbar() {
                 <a
                   href={link.href}
                   onClick={() => setOpen(false)}
-                  className="flex items-baseline gap-4 border-b border-line py-4 text-xl text-bright transition-colors hover:text-accent"
+                  className="flex items-baseline gap-4 border-b border-line py-4 text-xl text-bright transition-colors hover:text-violet"
                 >
                   <span className="font-mono text-[11px] text-muted">
                     {String(i + 1).padStart(2, '0')}

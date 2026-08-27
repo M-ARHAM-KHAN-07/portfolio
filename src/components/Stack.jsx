@@ -12,7 +12,7 @@ function StackItem({ item }) {
     <li className="stack-item">
       <div
         tabIndex={0}
-        className="h-full rounded-lg border border-line bg-white/[0.02] px-3 py-2.5 transition-colors duration-200 hover:border-accent/35 hover:bg-overlay/60 focus-visible:border-accent/50"
+        className="h-full rounded-lg border border-line bg-white/[0.02] px-3 py-2.5 transition-colors duration-200 hover:border-violet/35 hover:bg-overlay/60 focus-visible:border-violet/50"
       >
         <span className="block font-mono text-xs text-bright">{item.name}</span>
 
@@ -34,14 +34,14 @@ export default function Stack() {
       eyebrow="Stack"
       title="Technologies I work with"
       lede="Grouped by what they do, each with a note on how I have actually used it."
-      className="border-t border-line"
+      className="border-t border-line-soft"
     >
       <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
         {stackGroups.map((group, i) => (
           <Reveal key={group.title} delay={(i % 3) * 70} className="h-full">
             <div className="panel h-full p-5">
               <div className="flex items-center gap-3">
-                <span className="font-mono text-[11px] text-accent">
+                <span className="font-mono text-[11px] text-violet">
                   {String(i + 1).padStart(2, '0')}
                 </span>
                 <h3 className="text-sm font-semibold uppercase tracking-wider text-bright">
