@@ -536,6 +536,10 @@ export const stackGroups = [
 
 export const exploring = [
   {
+    name: 'Terraform / Infrastructure as Code',
+    note: 'Rebuilding pipelines I first built by hand as reviewable, reproducible code, starting with the serverless email ingestion stack.',
+  },
+  {
     name: 'Machine Learning Engineering',
     note: 'Moving from delivering data for models to owning the models themselves.',
   },
