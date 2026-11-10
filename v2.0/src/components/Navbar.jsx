@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from 'react'
 import { navLinks, profile } from '../data/resume'
 import { CloseIcon, DownloadIcon, MenuIcon } from './Icons'
 
-const resumeHref = `${import.meta.env.BASE_URL}${profile.resume}`
+const resumeHref = `mailto:${profile.email}?subject=Resume%20request`
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false)
@@ -105,11 +105,10 @@ export default function Navbar() {
             <div className="flex items-center gap-2">
               <a
                 href={resumeHref}
-                download
                 className="hidden items-center gap-2 rounded-lg border border-line bg-white/[0.02] px-3.5 py-2 font-mono text-xs text-body transition-colors hover:border-violet/40 hover:text-bright sm:inline-flex"
               >
                 <DownloadIcon className="h-3.5 w-3.5" />
-                Resume
+                Request résumé
               </a>
 
               <button
@@ -164,12 +163,11 @@ export default function Navbar() {
 
           <a
             href={resumeHref}
-            download
             onClick={() => setOpen(false)}
             className="btn btn-ghost mt-6 w-full"
           >
             <DownloadIcon className="h-4 w-4" />
-            Download resume
+            Request résumé
           </a>
         </div>
       </div>

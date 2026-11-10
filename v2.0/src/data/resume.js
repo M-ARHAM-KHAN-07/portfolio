@@ -49,7 +49,7 @@ export const stats = [
     prefix: '~',
     suffix: '%',
     label: 'Manual reporting removed',
-    context: 'Escana executive view',
+    context: 'Executive reporting view',
   },
 ]
 
@@ -84,20 +84,20 @@ export const experience = [
         metric: 'within 2% accuracy',
       },
       {
-        text: 'Built Power BI dashboards for Escana (oil company), consolidating 5+ KPI streams into a single executive reporting view.',
+        text: 'Built Power BI dashboards for an energy client, consolidating reporting into a single executive view.',
         metric: '~30% less manual reporting',
       },
       {
-        text: 'Designed dbt transformation models and Apache Airflow DAGs for the Kasper project, reducing pipeline failures through automated orchestration.',
+        text: 'Designed dbt models and Apache Airflow DAGs for repeatable data orchestration.',
       },
       {
         text: 'Engineered end-to-end ETL pipelines from web APIs to AWS EC2, trained an XGBoost price-prediction model and delivered results through a Streamlit application.',
       },
       {
-        text: 'Integrated pipelines from Stripe, RevenueCat, Amplitude and BigQuery into a unified warehouse and built a Looker Studio dashboard for real-time analytics (Staffan).',
+        text: 'Unified payment and product analytics sources into a warehouse with Looker Studio reporting.',
       },
       {
-        text: 'Automated multi-source data ingestion (Facebook/Google Ads, QuickBooks) into S3/Blob storage using Fivetran, eliminating manual data entry (DentalLook).',
+        text: 'Automated marketing and accounting data ingestion into cloud storage using Fivetran.',
       },
     ],
     stack: [
@@ -167,7 +167,7 @@ export const projects = [
   {
     id: 'aws-serverless',
     title: 'AWS Serverless Pipeline Engineering',
-    client: 'Cameron',
+    client: null,
     kind: 'Cloud / Serverless',
     featured: true,
     priority: 2,
@@ -250,9 +250,9 @@ export const projects = [
     stack: ['Python', 'SQL', 'BigQuery', 'Data Validation'],
   },
   {
-    id: 'kasper',
+    id: 'data-orchestration',
     title: 'dbt and Airflow Orchestration',
-    client: 'Kasper',
+    client: null,
     kind: 'Data Platform',
     featured: true,
     summary:
@@ -268,9 +268,9 @@ export const projects = [
     stack: ['dbt', 'Apache Airflow', 'SQL', 'Data Warehousing'],
   },
   {
-    id: 'escana',
+    id: 'executive-reporting',
     title: 'Executive Power BI Reporting',
-    client: 'Escana',
+    client: null,
     kind: 'BI & Analytics',
     featured: false,
     summary:
@@ -288,9 +288,9 @@ export const projects = [
     stack: ['Power BI', 'SQL', 'Data Modelling'],
   },
   {
-    id: 'staffan',
+    id: 'product-analytics',
     title: 'Unified Product Analytics Warehouse',
-    client: 'Staffan',
+    client: null,
     kind: 'Data Platform',
     featured: false,
     summary:
@@ -305,9 +305,9 @@ export const projects = [
     stack: ['BigQuery', 'Stripe', 'RevenueCat', 'Amplitude', 'Looker Studio'],
   },
   {
-    id: 'dentallook',
+    id: 'source-ingestion',
     title: 'Multi-Source Ingestion Automation',
-    client: 'DentalLook',
+    client: null,
     kind: 'Pipeline / QA',
     featured: false,
     summary:
@@ -374,10 +374,10 @@ export const architectureLayers = [
         name: 'Facebook / Google Ads',
         note: 'Ad-platform exports ingested via Fivetran and reconciled against warehouse output.',
       },
-      { name: 'Stripe', note: 'Revenue data integrated into a unified warehouse for Staffan.' },
+      { name: 'Stripe', note: 'Revenue data integrated into a unified warehouse.' },
       { name: 'RevenueCat', note: 'Subscription data unified alongside Stripe and Amplitude.' },
-      { name: 'Amplitude', note: 'Product engagement events joined into the Staffan warehouse.' },
-      { name: 'QuickBooks', note: 'Accounting data automated into S3/Blob storage for DentalLook.' },
+      { name: 'Amplitude', note: 'Product engagement events joined into a warehouse.' },
+      { name: 'QuickBooks', note: 'Accounting data automated into cloud storage.' },
       { name: 'Inbound Email', note: 'CSV attachments arriving over SES as a pipeline trigger.' },
     ],
   },
@@ -385,7 +385,7 @@ export const architectureLayers = [
     stage: 'Ingestion',
     caption: 'Getting it in, reliably',
     nodes: [
-      { name: 'Fivetran', note: 'Managed connectors replacing manual data entry for DentalLook.' },
+      { name: 'Fivetran', note: 'Managed connectors replacing manual data entry.' },
       {
         name: 'AWS Lambda',
         note: 'S3-triggered functions parsing MIME email, routing CSVs and loading RDS.',
@@ -406,7 +406,7 @@ export const architectureLayers = [
     stage: 'Transformation',
     caption: 'Making it trustworthy',
     nodes: [
-      { name: 'dbt', note: 'Layered staging, intermediate and mart models for the Kasper project.' },
+      { name: 'dbt', note: 'Layered staging, intermediate and mart models.' },
       {
         name: 'Apache Airflow',
         note: 'DAGs with dependencies, retries and alerting driving the load.',
@@ -465,8 +465,8 @@ export const architectureLayers = [
         name: 'Metabase',
         note: 'Client-facing BI dashboards backed by complex SQL against BigQuery.',
       },
-      { name: 'Power BI', note: 'Executive reporting for Escana, consolidating 5+ KPI streams.' },
-      { name: 'Looker Studio', note: 'Real-time revenue and engagement analytics for Staffan.' },
+      { name: 'Power BI', note: 'Consolidated executive reporting.' },
+      { name: 'Looker Studio', note: 'Revenue and engagement analytics.' },
       { name: 'Streamlit', note: 'Delivery surface for XGBoost price-prediction results.' },
       { name: 'Qlik', note: 'BI and analytics tooling.' },
       { name: 'Mixpanel', note: 'Product analytics and KPI reporting.' },
@@ -537,8 +537,8 @@ export const stackGroups = [
     title: 'BI & Analytics',
     items: [
       { name: 'Metabase', note: 'Client-facing dashboards over BigQuery.' },
-      { name: 'Power BI', note: 'Executive KPI consolidation for Escana.' },
-      { name: 'Looker Studio', note: 'Real-time analytics dashboard for Staffan.' },
+      { name: 'Power BI', note: 'Executive reporting consolidation.' },
+      { name: 'Looker Studio', note: 'Analytics dashboards.' },
       { name: 'Streamlit', note: 'Lightweight delivery of model output to end users.' },
       { name: 'Qlik', note: 'BI and analytics tooling.' },
       { name: 'Mixpanel', note: 'Product analytics and KPI reporting.' },

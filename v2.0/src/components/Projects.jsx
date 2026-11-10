@@ -91,6 +91,7 @@ function ProjectCard({ project, onOpen, index, position }) {
 export default function Projects() {
   const [openId, setOpenId] = useState(null)
   const [filter, setFilter] = useState('All')
+  const [showMore, setShowMore] = useState(false)
 
   const orderedProjects = useMemo(
     () => [...projects].sort((a, b) => (a.priority ?? 99) - (b.priority ?? 99)),
@@ -98,7 +99,8 @@ export default function Projects() {
   )
   const categories = useMemo(() => ['All', ...Array.from(new Set(orderedProjects.map((p) => p.kind)))], [orderedProjects])
 
-  const visible = filter === 'All' ? orderedProjects : orderedProjects.filter((p) => p.kind === filter)
+  const available = showMore ? orderedProjects : orderedProjects.slice(0, 3)
+  const visible = filter === 'All' ? available : available.filter((p) => p.kind === filter)
   const openProject = orderedProjects.find((p) => p.id === openId) || null
 
   return (
@@ -119,7 +121,7 @@ export default function Projects() {
                 <button
                   key={cat}
                   type="button"
-                  onClick={() => setFilter(cat)}
+                  onClick={() => { setFilter(cat); if(cat !== 'All') setShowMore(true) }}
                   aria-pressed={on}
                   className={`rounded-lg border px-3.5 py-2 font-mono text-xs transition-all duration-200 ${
                     on
@@ -144,6 +146,11 @@ export default function Projects() {
               onOpen={() => setOpenId(project.id)}
             />
           ))}
+        </div>
+        <div className="mt-7 flex justify-center">
+          <button type="button" className="btn btn-ghost" aria-expanded={showMore} onClick={() => { setShowMore(!showMore); setFilter('All') }}>
+            {showMore ? 'Show fewer projects' : `View more projects (${orderedProjects.length - 3})`}
+          </button>
         </div>
       </Section>
 

@@ -8,7 +8,7 @@ import {
 } from './Icons'
 import Reveal from './Reveal'
 
-const resumeHref = `${import.meta.env.BASE_URL}${profile.resume}`
+const resumeHref = `mailto:${profile.email}?subject=Resume%20request`
 
 const channels = [
   {
@@ -65,9 +65,9 @@ export default function Contact() {
                   {profile.email}
                   <ArrowUpRightIcon className="h-3.5 w-3.5 transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
                 </a>
-                <a href={resumeHref} download className="btn btn-ghost">
+                <a href={resumeHref} className="btn btn-ghost">
                   <DownloadIcon className="h-4 w-4" />
-                  Download resume
+                  Request résumé
                 </a>
               </div>
             </Reveal>
