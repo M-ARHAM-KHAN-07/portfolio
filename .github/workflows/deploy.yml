@@ -26,9 +26,10 @@ jobs:
         with:
           node-version: 20
           cache: npm
+          cache-dependency-path: v2.0/package-lock.json
 
       - name: Install dependencies
-        run: npm ci
+        run: npm ci --prefix v2.0
 
       - name: Resolve Vite base path
         id: base
@@ -43,16 +44,16 @@ jobs:
       - name: Build
         env:
           VITE_BASE: ${{ steps.base.outputs.path }}
-        run: npm run build
+        run: npm run build --prefix v2.0
 
       - name: Add SPA 404 fallback
-        run: cp dist/index.html dist/404.html
+        run: cp v2.0/dist/index.html v2.0/dist/404.html
 
       - uses: actions/configure-pages@v5
 
       - uses: actions/upload-pages-artifact@v3
         with:
-          path: dist
+          path: v2.0/dist
 
   deploy:
     needs: build
