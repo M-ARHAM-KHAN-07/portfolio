@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 460" fill="none">
+<defs><linearGradient id="red" x1="80" y1="60" x2="270" y2="390" gradientUnits="userSpaceOnUse"><stop stop-color="#ff5262"/><stop offset="1" stop-color="#b41135"/></linearGradient><linearGradient id="blue" x1="80" y1="180" x2="280" y2="430" gradientUnits="userSpaceOnUse"><stop stop-color="#338fd0"/><stop offset="1" stop-color="#123f82"/></linearGradient><filter id="shadow"><feDropShadow dx="0" dy="14" stdDeviation="10" flood-color="#192d50" flood-opacity=".25"/></filter></defs>
+<g transform="rotate(-16 180 230)" filter="url(#shadow)" stroke="#142b50" stroke-width="7" stroke-linejoin="round" stroke-linecap="round">
+<!-- web line -->
+<path d="M265 65 Q291 30 322 0" stroke="#526983" stroke-width="3"/>
+<!-- dynamic legs -->
+<path d="M156 277 L177 299 L131 350 Q121 360 111 348 L83 310 L100 298 L128 325 Z" fill="url(#blue)"/>
+<path d="M188 278 L226 309 Q237 319 228 334 L201 389 L181 381 L203 330 L165 307 Z" fill="url(#red)"/>
+<!-- boots -->
+<path d="M83 310 L73 293 Q68 283 77 279 L92 280 L104 299 Z M181 378 L203 386 L224 397 Q235 408 222 412 L179 402 Z" fill="#182c50"/>
+<!-- torso -->
+<path d="M138 175 Q180 149 221 175 L211 274 Q180 304 145 274 Z" fill="url(#blue)"/>
+<!-- chest red panels -->
+<path d="M151 183 L179 187 L180 272 L148 278 L141 265 Z M208 183 L181 187 L180 272 L208 278 L217 265 Z" fill="url(#red)"/>
+<!-- arms -->
+<path d="M141 186 L116 182 L91 214 L63 202 Q51 198 48 208 Q45 218 57 224 L92 241 Q102 245 111 232 L144 211" fill="url(#red)"/>
+<path d="M216 181 L240 125 L251 81 Q248 67 259 62 Q274 58 279 71 L268 135 L242 204 Z" fill="url(#blue)"/>
+<path d="M248 96 L253 77 Q249 66 259 62 Q274 58 279 71 L274 101 Z" fill="url(#red)"/>
+<!-- mask -->
+<path d="M139 90q7-48 42-54 38 5 43 54l-15 58q-12 22-28 26-18-5-29-26z" fill="url(#red)"/>
+<!-- eyes -->
+<path d="m147 103 31 8-16 22q-13-1-19-30zM215 103l-31 8 16 22q13-1 19-30z" fill="#f6fbff" stroke-width="4"/>
+<!-- web pattern mask -->
+<g stroke="#ffd5db" stroke-width="1.5" opacity=".8"><path d="M181 39v130M147 74l70 80M217 74l-70 80M142 109h78M153 66q27 28 57 0M148 137q32-18 68 0M157 54q24 16 50 0"/><path d="m157 183 22 17-22 20 22 20-22 20M207 183l-21 17 21 20-21 20 21 20"/></g>
+<!-- chest data mark -->
+<path d="m180 200 10 18-10 18-10-18z" fill="#fff" stroke="#ffdf6e" stroke-width="3"/><path d="M180 205v25m-7-12h14" stroke="#ffdf6e" stroke-width="2"/>
+<!-- wrist web shooter -->
+<path d="M65 202 L78 208 L71 225 L59 219 Z M248 99 L274 103 L270 114 L245 110 Z" fill="#d9edff"/>
+</g>
+</svg>
