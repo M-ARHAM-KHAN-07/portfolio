@@ -1,7 +1,12 @@
+import HangingHero from './HangingHero'
 import { useEffect, useState } from 'react'
 
 /** Subtle comic web tracer that follows scroll and pulls a small page tag upward. */
 export default function WebSwing() {
+  return <HangingHero />
+}
+
+function LegacyWebSwing() {
   const [progress, setProgress] = useState(0)
   const [swing, setSwing] = useState(false)
 
