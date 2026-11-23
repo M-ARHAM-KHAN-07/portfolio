@@ -1,47 +1,33 @@
 import { useEffect, useRef, useState } from 'react'
 
-/** True once the element has scrolled into view. Fires once, then disconnects. */
-export function useInView(options) {
+/** Soft fade and rise, once, when the element scrolls into view. */
+export default function Reveal({ children, delay = 0, as: Tag = 'div', className = '' }) {
   const ref = useRef(null)
-  const [inView, setInView] = useState(false)
+  const [shown, setShown] = useState(false)
 
   useEffect(() => {
     const node = ref.current
-    if (!node) return
-
-    if (typeof IntersectionObserver === 'undefined') {
-      setInView(true)
+    if (!node || typeof IntersectionObserver === 'undefined') {
+      setShown(true)
       return
     }
-
-    const observer = new IntersectionObserver(
+    const io = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
-          setInView(true)
-          observer.disconnect()
+          setShown(true)
+          io.disconnect()
         }
       },
-      { threshold: 0.1, rootMargin: '0px 0px -50px 0px', ...options },
+      { threshold: 0.08, rootMargin: '0px 0px -40px 0px' },
     )
-
-    observer.observe(node)
-    return () => observer.disconnect()
-  }, [options])
-
-  return [ref, inView]
-}
-
-/**
- * Fades and lifts its children into view once. The CSS class is inert under
- * prefers-reduced-motion, so this stays safe to wrap anything in.
- */
-export default function Reveal({ children, delay = 0, className = '', as: Tag = 'div' }) {
-  const [ref, inView] = useInView()
+    io.observe(node)
+    return () => io.disconnect()
+  }, [])
 
   return (
     <Tag
       ref={ref}
-      className={`reveal ${inView ? 'shown' : ''} ${className}`}
+      className={`reveal ${shown ? 'shown' : ''} ${className}`}
       style={delay ? { transitionDelay: `${delay}ms` } : undefined}
     >
       {children}

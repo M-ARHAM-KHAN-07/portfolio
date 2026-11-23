@@ -1,6 +1,5 @@
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
-import tailwindcss from '@tailwindcss/vite'
 
 // GitHub Pages project sites are served from https://<user>.github.io/<repo>/
 // so assets need a base path of "/<repo>/". The deploy workflow sets VITE_BASE
@@ -8,7 +7,7 @@ import tailwindcss from '@tailwindcss/vite'
 export default defineConfig({
   base: process.env.VITE_BASE || '/',
   cacheDir: `${process.env.TEMP || process.cwd()}/arham-portfolio-v2-vite-cache`,
-  plugins: [react(), tailwindcss()],
+  plugins: [react()],
   build: {
     outDir: 'dist',
     sourcemap: false,
